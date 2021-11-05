@@ -1,0 +1,15 @@
+body {
+    /* all: unset; */
+    margin: 0;
+    padding: 0;
+}
+
+/* button {
+    all: unset;
+} */
+
+/* .hero {
+    @apply bg-cover bg-center min-h-screen-75;
+
+    background-image: url(./hero.jpg);
+  } */
