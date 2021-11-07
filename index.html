@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="tailwind.css" /> -->
-    <script src="https://unpkg.com/vue@next"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="windi.css" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet"> -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <style lang="windi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="tailwind.css" /> -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="windi.css" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.4.95/css/materialdesignicons.min.css">
+  <!-- <style lang="windi">
       .hero {
         @apply bg-cover bg-center min-h-screen-75;
 
         background-image: url(./hero-min.jpg);
       }
     </style> -->
-  </head>
-  <body>
-    <div id="app">
-      <!-- <section class="nav">
-      <header>
-        <nav class="sticky bg-white px-8 p-2 shadow-md">
-          <div class="-mb-px flex justify-center">
-            <a class="no-underline text-dark-50 border-b-2 border-teal-900 uppercase tracking-wide font-bold py-3 mr-8" href="#">
-                Home
-            </a>
-            <a class="no-underline text-dark-50 border-b-2 border-transparent uppercase tracking-wide font-bold py-3 mr-8" href="#">
-                Products
-            </a>
-            <a class="no-underline text-dark-50 border-b-2 border-transparent uppercase tracking-wide font-bold py-3 mr-8" href="#">
-                Discounts
-            </a>
-            <a class="no-underline text-dark-50 border-b-2 border-transparent uppercase tracking-wide font-bold py-3" href="#">
-                Customers
-            </a>
-          </div>
-        </nav>
-      </header>
-    </section> -->
-      <section
-        class="relative hero h-75vh flex justify-center"
-        style="background-image: url(./hero.jpg)"
-      >
-        <div class="container mx-auto flex justify-center items-center">
-          <div class="text-center">
-            <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
-              Luca & Francesca
-            </p>
-            <div class="inline-flex">
+</head>
+
+<body>
+  <!-- <nav class="fixed top-0 bg-transparent  z-9999">
+    <div class="-mb-px flex justify-center">
+      <a class="no-underline"
+        href="#">
+        Home
+      </a>
+      <a class="no-underline text-dark-50 border-b-2 border-transparent uppercase tracking-wide font-bold py-3 mr-8"
+        href="#timeline">
+        Qualcosa su di noi
+      </a>
+      <a class=""
+        href="#">
+        Cose da fare
+      </a>
+      <a class=""
+        href="#">
+        Info Wedding
+      </a>
+      <a class=""
+        href="#">
+        Info COVID
+      </a>
+    </div>
+  </nav> -->
+
+  <section class="relative hero h-75vh flex justify-center" style="background-image: url(./hero.jpg)">
+    <div class="container mx-auto flex justify-center items-center">
+      <div class="text-center">
+        <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
+          Luca & Francesca
+        </p>
+        <!-- <div class="inline-flex">
               <button
                 class="
                   btn
@@ -66,112 +67,112 @@
               >
                 RSVP
               </button>
-            </div>
-          </div>
-        </div>
-
-        <svg
-          class="absolute bottom-0"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 100"
-        >
-          <!-- <path fill="#0099ff" fill-opacity="1" d="M0,96L120,85.3C240,75,480,53,720,53.3C960,53,1200,75,1320,85.3L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path> -->
-          <!-- <path d="M 0 0 C 200 100, 1240 100, 1440 0" fill="#0099ff"/> -->
-          <path
-            d="M 0 50 C 300 0, 1140 0, 1440 50 L 1440 150 L 0 150 Z"
-            fill="white"
-          />
-        </svg>
-      </section>
-
-      <section id="countdown">
-        <div class="w-screen text-center flex items-center justify-center">
-          <div class="mr-6">
-            <p class="text-3xl font-bold">{{timer.d}}</p>
-            <p class="text-2xl">Giorni</p>
-          </div>
-          <div class="mr-6">
-            <p class="text-3xl font-bold">{{timer.h}}</p>
-            <p class="text-2xl">Ore</p>
-          </div>
-          <div class="mr-6">
-            <p class="text-3xl font-bold">{{timer.m}}</p>
-            <p class="text-2xl">Minuti</p>
-          </div>
-          <div class="">
-            <p class="text-3xl font-bold">{{timer.s}}</p>
-            <p class="text-2xl">Secondi</p>
-          </div>
-        </div>
-      </section>
-
-
-      <section id="timeline">
-        <div class="container relative mx-auto bg-gray-200">
-            <div class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"></div>
-            <div class="grid grid-cols-[2fr,auto,2fr] gap-x-3 gap-y-8 justify-items-center items-center overflow-hidden p-4 :md:p-10">
-              <div class="col-start-2 flex flex-col justify-center h-22 w-22 border-solid rounded-full border-2 border-green-300 text-center z-2 bg-white">
-                <div>20</div>
-                <div>Dicembre</div>
-              </div>
-              <div class="col-start-3 bg-gray-400 rounded-lg shadow-xl px-6 py-4">
-                <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div>
-                <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-              </div>
-
-              <div class="col-start-1 bg-gray-400 rounded-lg shadow-xl px-6 py-4">
-                <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div>
-                <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-              </div>
-              <div class="col-start-2 flex flex-col justify-center h-22 w-22 border-solid rounded-full border-2 border-green-300 text-center z-2 bg-white">
-                <div>20</div>
-                <div>Dicembre</div>
-              </div>
-
-          </div>
-        </div>
-      </section>
-
+            </div> -->
+      </div>
     </div>
 
-    <script>
-      const { ref, reactive } = Vue;
+    <svg class="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+      <!-- <path fill="#0099ff" fill-opacity="1" d="M0,96L120,85.3C240,75,480,53,720,53.3C960,53,1200,75,1320,85.3L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path> -->
+      <!-- <path d="M 0 0 C 200 100, 1240 100, 1440 0" fill="#0099ff"/> -->
+      <path d="M 0 50 C 300 0, 1140 0, 1440 50 L 1440 150 L 0 150 Z" fill="white" />
+    </svg>
+  </section>
 
-      const future = Date.parse("jun 04, 2022 10:30:00");
+  <section id="countdown">
+    <div class="w-screen text-center flex items-center justify-center">
+      <div class="mr-6">
+        <p class="text-3xl font-bold">{{timer.d}}</p>
+        <p class="text-2xl">Giorni</p>
+      </div>
+      <div class="mr-6">
+        <p class="text-3xl font-bold">{{timer.h}}</p>
+        <p class="text-2xl">Ore</p>
+      </div>
+      <div class="mr-6">
+        <p class="text-3xl font-bold">{{timer.m}}</p>
+        <p class="text-2xl">Minuti</p>
+      </div>
+      <div class="">
+        <p class="text-3xl font-bold">{{timer.s}}</p>
+        <p class="text-2xl">Secondi</p>
+      </div>
+    </div>
+  </section>
 
-      Vue.createApp({
-        setup() {
-          const timer = reactive({d: undefined, h: undefined, m: undefined, s: undefined});
 
-          const updateTimer = () => {
-            let now = new Date();
-            let diff = future - now;
-            days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            hours = Math.floor(diff / (1000 * 60 * 60));
-            mins = Math.floor(diff / (1000 * 60));
-            secs = Math.floor(diff / 1000);
+  <section id="timeline">
+    <div class="container relative mx-auto bg-gray-200">
+      <div class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"></div>
+      <div
+        class="grid grid-cols-[2fr,auto,2fr] gap-x-3 gap-y-8 justify-items-center items-center overflow-hidden p-4 :md:p-10">
+        <div
+          class="col-start-2 flex flex-col justify-center h-22 w-22 border-solid rounded-full border-2 border-green-300 text-center z-2 bg-white">
+          <div>20</div>
+          <div>Dicembre</div>
+        </div>
+        <div class="col-start-3 bg-gray-400 rounded-lg shadow-xl px-6 py-4">
+          <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div>
+          <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text
+            of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
 
-            timer.d = days;
-            timer.h = hours - days * 24;
-            timer.m = mins - hours * 60;
-            timer.s = secs - mins * 60;
-          }
+        <div class="col-start-1 bg-gray-400 rounded-lg shadow-xl px-6 py-4">
+          <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div>
+          <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text
+            of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div
+          class="col-start-2 flex flex-col justify-center h-22 w-22 border-solid rounded-full border-2 border-green-300 text-center z-2 bg-white">
+          <div>20</div>
+          <div>Dicembre</div>
+        </div>
 
-          return {
-            timer,
-            updateTimer
-          }
-        },
-        // data() {
-        //   return {
-        //     timer: {days: undefined, hours: undefined, mins: undefined, secs: undefined}
-        //   }
-        // },
-        created() {
-          this.updateTimer();
-          setInterval(this.updateTimer, 1000)
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    const { ref, reactive } = Vue;
+
+    const future = Date.parse("jun 04, 2022 10:30:00");
+
+    Vue.createApp({
+      setup() {
+        const timer = reactive({ d: undefined, h: undefined, m: undefined, s: undefined });
+
+        const updateTimer = () => {
+          let now = new Date();
+          let diff = future - now;
+          days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          hours = Math.floor(diff / (1000 * 60 * 60));
+          mins = Math.floor(diff / (1000 * 60));
+          secs = Math.floor(diff / 1000);
+
+          timer.d = days;
+          timer.h = hours - days * 24;
+          timer.m = mins - hours * 60;
+          timer.s = secs - mins * 60;
         }
-      }).mount("#countdown");
-    </script>
-  </body>
+
+        return {
+          timer,
+          updateTimer
+        }
+      },
+      // data() {
+      //   return {
+      //     timer: {days: undefined, hours: undefined, mins: undefined, secs: undefined}
+      //   }
+      // },
+      created() {
+        this.updateTimer();
+        setInterval(this.updateTimer, 1000)
+      }
+    }).mount("#countdown");
+  </script>
+</body>
+
 </html>

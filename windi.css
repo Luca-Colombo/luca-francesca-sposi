@@ -216,15 +216,17 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.fixed {
+  position: fixed;
+}
 .absolute {
   position: absolute;
 }
 .relative {
   position: relative;
 }
-.sticky {
-  position: sticky;
-  position: -webkit-sticky;
+.top-0 {
+  top: 0px;
 }
 .bottom-0 {
   bottom: 0px;
@@ -283,6 +285,12 @@
 }
 .z-2 {
   z-index: 2;
+}
+.z-auto {
+  z-index: auto;
+}
+.z-9999 {
+  z-index: 9999;
 }
 .gap-x-3 {
   -webkit-column-gap: 0.75rem;
