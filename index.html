@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="tailwind.css" /> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="tailwind.css" />
   <script src="https://unpkg.com/vue@next"></script>
   <link rel="stylesheet" type="text/css" media="screen" href="windi.css" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
@@ -78,23 +78,37 @@
     </svg>
   </section>
 
-  <section id="countdown">
-    <div class="w-screen text-center flex items-center justify-center">
-      <div class="mr-6">
-        <p class="text-3xl font-bold">{{timer.d}}</p>
-        <p class="text-2xl">Giorni</p>
-      </div>
-      <div class="mr-6">
-        <p class="text-3xl font-bold">{{timer.h}}</p>
-        <p class="text-2xl">Ore</p>
-      </div>
-      <div class="mr-6">
-        <p class="text-3xl font-bold">{{timer.m}}</p>
-        <p class="text-2xl">Minuti</p>
-      </div>
-      <div class="">
-        <p class="text-3xl font-bold">{{timer.s}}</p>
-        <p class="text-2xl">Secondi</p>
+  <section id="countdown" class="mb-8">
+    <div class="w-full text-center flex items-center justify-center">
+      <div class="flex items-center justify-center rounded-lg p-4 bg-pink-100">
+
+        <template v-for="(t, i) in timer" :key="i">
+          <div class="min-w-16 rounded-lg shadow-md bg-gradient-to-b from-pink-300 to-pink-200 shadow-purple-800">
+            <p class="text-2xl font-bold">{{t.val}}</p>
+            <p class="text-sm">{{t.label}}</p>
+          </div>
+          <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
+        </template>
+
+        <!-- <div class="min-w-16 rounded-lg shadow-md">
+          <p class="text-2xl font-bold">{{timer.d}}</p>
+          <p class="text-sm">Giorni</p>
+        </div>
+        <div class="text-2xl mx-3">:</div>
+        <div class="min-w-16 rounded-lg shadow-md">
+          <p class="text-2xl font-bold">{{timer.h}}</p>
+          <p class="text-sm">Ore</p>
+        </div>
+        <div class="text-2xl mx-3">:</div>
+        <div class="min-w-16 rounded-lg shadow-md">
+          <p class="text-2xl font-bold">{{timer.m}}</p>
+          <p class="text-sm">Minuti</p>
+        </div>
+        <div class="text-2xl mx-3">:</div>
+        <div class="min-w-16 rounded-lg shadow-md">
+          <p class="text-2xl font-bold">{{timer.s}}</p>
+          <p class="text-sm">Secondi</p>
+        </div> -->
       </div>
     </div>
   </section>
@@ -118,10 +132,8 @@
         </div>
 
         <div class="col-start-1 bg-gray-400 rounded-lg shadow-xl px-6 py-4">
-          <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div>
-          <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text
-            of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <!-- <div class="mb-3 font-bold text-gray-800 text-xl">Lorem Ipsum</div> -->
+          <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Lorem Ipsum is simply dummy text</p>
         </div>
         <div
           class="col-start-2 flex flex-col justify-center h-22 w-22 border-solid rounded-full border-2 border-green-300 text-center z-2 bg-white">
@@ -141,7 +153,24 @@
 
     Vue.createApp({
       setup() {
-        const timer = reactive({ d: undefined, h: undefined, m: undefined, s: undefined });
+        const timer = reactive({
+          d: {
+            val: undefined,
+            label: "Giorni"
+          },
+          h: {
+            val: undefined,
+            label: "Ore"
+          },
+          m: {
+            val: undefined,
+            label: "Minuti"
+          },
+          s: {
+            val: undefined,
+            label: "Secondi"
+          },
+        });
 
         const updateTimer = () => {
           let now = new Date();
@@ -151,10 +180,10 @@
           mins = Math.floor(diff / (1000 * 60));
           secs = Math.floor(diff / 1000);
 
-          timer.d = days;
-          timer.h = hours - days * 24;
-          timer.m = mins - hours * 60;
-          timer.s = secs - mins * 60;
+          timer.d.val = days;
+          timer.h.val = hours - days * 24;
+          timer.m.val = mins - hours * 60;
+          timer.s.val = secs - mins * 60;
         }
 
         return {
