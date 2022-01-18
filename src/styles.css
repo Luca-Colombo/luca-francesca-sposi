@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply cursor-pointer py-2 px-4 font-semibold rounded-lg shadow-md;
+  }
+}
