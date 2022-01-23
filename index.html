@@ -164,7 +164,7 @@
 
     <section
       class="bg-cover bg-center h-screen flex justify-center"
-      style="background-image: url(./hero.jpg)"
+      style="background-image: url(images/hero.jpg)"
     >
       <div class="container mx-auto flex justify-center items-center">
         <div class="text-center">
@@ -232,6 +232,32 @@
       <div class="text-center p-4 bg-teal-900 text-neutral-50">
         <h2 class="text-4xl">COME È NATA</h2>
       </div>
+
+      <div class="flex flex-col md:flex-row md:space-x-6">
+        <div>
+          <figure class="block relative">
+            <img src="images/our_story.jpg" class="object-cover"/>
+          </figure>
+        </div>
+        
+        <p class="text-lg p-6">
+          Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
+          il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
+          avvicinava...piena stagione sciistica pensò. Questo sarà il mio
+          approccio! "Ciao, ho visto che sai sciare, vai a fare la vacanza di
+          sci con Moscatelli?" Francesca non sapeva se ridere o piangere a
+          questo messaggio, in fondo...lui doveva aver guardato un po' di sue
+          foto su facebook per capire che sciava. Ma come aveva fatto a non
+          accorgersi che questo stesso anno si era rotta un ginocchio mentre
+          sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei ricci
+          ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da quel
+          giorno tutto è cambiato nelle loro vite, si sono conosciuti, si sono
+          piaciuti e si sono innamorati, ogni giorno di più. Hanno litigato
+          tante volte e altrettante volte si sono chiesti se stare insieme era
+          la cosa giusta, ma alla fine hanno capito che l'unica cosa che
+          volevano era passare la loro vita insieme.
+        </p>
+      </div>
     </section>
 
     <section id="timeline">
@@ -294,9 +320,26 @@
               <div class="text-lg">{{ event.text }}</div>
             </div>
           </template>
-
         </div>
       </div>
+    </section>
+
+    <section id="checklist">
+      <div class="text-center p-4 bg-teal-900 text-neutral-50">
+        <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
+      </div>
+
+      <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
+        <div v-for="(e, i) in todos" :key="i" class="flex items-center space-x-2">
+          <div>
+            <i class="mdi text-4xl" :class="[e.checked ? 'mdi-checkbox-marked-circle-outline' : 'mdi-checkbox-blank-circle-outline']"></i>
+          </div>
+          <p>
+            {{ e.text }}
+          </p>
+        </div>
+      </div>
+      
     </section>
 
     <script>
@@ -442,6 +485,88 @@
           return { events };
         },
       }).mount("#timeline");
+
+
+      Vue.createApp({
+        setup() {
+          const todos = reactive([
+            {
+              text: "Anello",
+              checked: true
+            },
+            {
+              text: "Proposta",
+              checked: true
+            },
+            {
+              text: "Francesca dice di sì!",
+              checked: true
+            },
+            {
+              text: "Data",
+              checked: true
+            },
+            {
+              text: "Chiesa",
+              checked: true
+            },
+            {
+              text: "Testimoni",
+              checked: true
+            },
+            {
+              text: "Location",
+              checked: true
+            },
+            {
+              text: "Fiori",
+              checked: false
+            },
+            {
+              text: "Invitati",
+              checked: false
+            },
+            {
+              text: "Partecipazioni",
+              checked: false
+            },
+            {
+              text: "Bomboniere",
+              checked: false
+            },
+            {
+              text: "Fotografo",
+              checked: true
+            },
+            {
+              text: "DJ",
+              checked: false
+            },
+            {
+              text: "Abito sposa",
+              checked: true
+            },
+            {
+              text: "Abito sposo",
+              checked: false
+            },
+            {
+              text: "Fedi",
+              checked: false
+            },
+            {
+              text: "Casa",
+              checked: false
+            },
+            {
+              text: "Mobili",
+              checked: false
+            },
+          ]);
+
+          return { todos };
+        },
+      }).mount("#checklist");
     </script>
   </body>
 </html>
