@@ -42,6 +42,7 @@
       .grid-area-right {
         grid-area: right;
       }
+
     </style>
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -162,229 +163,236 @@
       </div>
     </nav>
 
-    <section
-      class="bg-cover bg-center h-screen flex justify-center"
-      style="background-image: url(images/hero.jpg)"
-    >
-      <div class="container mx-auto flex justify-center items-center">
-        <div class="text-center">
-          <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
-            Luca <span class="font-baskerville font-normal">&</span> Francesca
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="bg-rosa-400">
 
-    <section id="countdown" class="pb-6">
-      <div class="w-full text-center flex items-center justify-center">
-        <div
-          class="w-full flex items-center justify-evenly p-4 bg-oliva-100"
-        >
-          <template v-for="(t, i) in timer" :key="i">
-            <div
-              class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-oliva-300 to-oliva-200 shadow-oliva-800"
-            >
-              <p class="text-3xl font-bold">{{t.val}}</p>
-              <p class="text-sm">{{t.label}}</p>
-            </div>
-            <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
-          </template>
-        </div>
-      </div>
-    </section>
-
-    <section id="calendar" class="pb-6 px-4 flex items-center">
-      <div class="grow shrink basis-0 text-center">
-        <span class="block text-4xl font-semibold text-neutral-900">SEGNA</span>
-        <span class="block text-4xl font-semibold text-neutral-900">LA</span>
-        <span class="block text-4xl font-semibold text-neutral-900">DATA!</span>
-      </div>
-
-      <div class="grow basis-0 text-center">
-        <div class="grid grid-cols-7 w-52 mx-auto">
-          <span v-for="(day, i) in days" :key="i" class=""> {{ day }} </span>
-          <!-- </div>
-
-        <div class="grid grid-cols-7"> -->
-          <span class="leading-9"></span>
-          <span class="leading-9"></span>
-          <span
-            v-for="(num) in 30"
-            :key="`day_${num}`"
-            class="relative leading-9"
-          >
-            <i
-              v-if="num === 4"
-              class="mdi mdi-heart absolute -left-0.5 -top-0.5 h-6 w-6 text-red-800 text-4xl"
-              aria-hidden
-            ></i>
-            <span
-              class="relative font-semibold"
-              :class="[num === 4 ? 'text-neutral-50' : '']"
-              >{{ num }}</span
-            >
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <section id="our_story">
-      <div class="title">
-        <h2 class="text-4xl">COME È NATA</h2>
-      </div>
-
-      <div class="flex flex-col md:flex-row md:space-x-6">
-        <div>
-          <figure class="block relative">
-            <img src="images/our_story.jpg" class="object-cover"/>
-          </figure>
-        </div>
-        
-        <p class="text-lg p-6">
-          Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
-          il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
-          avvicinava...piena stagione sciistica pensò. Questo sarà il mio
-          approccio! "Ciao, ho visto che sai sciare, vai a fare la vacanza di
-          sci con Moscatelli?" Francesca non sapeva se ridere o piangere a
-          questo messaggio, in fondo...lui doveva aver guardato un po' di sue
-          foto su facebook per capire che sciava. Ma come aveva fatto a non
-          accorgersi che questo stesso anno si era rotta un ginocchio mentre
-          sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei ricci
-          ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da quel
-          giorno tutto è cambiato nelle loro vite, si sono conosciuti, si sono
-          piaciuti e si sono innamorati, ogni giorno di più. Hanno litigato
-          tante volte e altrettante volte si sono chiesti se stare insieme era
-          la cosa giusta, ma alla fine hanno capito che l'unica cosa che
-          volevano era passare la loro vita insieme.
-        </p>
-      </div>
-    </section>
-
-    <section id="timeline">
-      <div class="title">
-        <h2 class="text-4xl">LA NOSTRA STORIA</h2>
-      </div>
-      <div
-        class="container relative mx-auto bg-gray-200 shadow-md shadow-grey-400"
+      <section
+        class="bg-cover bg-center h-screen flex justify-center"
+        style="background-image: url(images/hero.jpg)"
       >
-        <!-- <div
-          class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"
-        ></div> -->
-        <div
-          class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-4 gap-y-2 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
-          id="events"
-        >
-          <template v-for="(event, i) in events" :key="`event_${i}`">
-            <div
-              :class="[`text-${event.color}-600`, 'pb-5', i % 2 === 0 ? 'text-right' : 'text-left']"
-              :style="{order: 3*i + (i % 2 === 0 ? 1 : 3)}"
-            >
-              <div class="uppercase text-xl">{{ event.month }}</div>
-              <div class="uppercase text-5xl font-bold">{{ event.year }}</div>
-            </div>
-
-            <div
-              class="flex flex-col justify-center items-center"
-              :style="{order: 3*i + 2}"
-            >
-              <div
-                class="h-2.5 w-2.5 rounded-full mb-2"
-                :class="[`bg-${event.color}-300`]"
-              ></div>
-              <div
-                class="h-3 w-3 rounded-full mb-2"
-                :class="[`bg-${event.color}-400`]"
-              ></div>
-              <div
-                class="h-3.5 w-3.5 rounded-full mb-2"
-                :class="[`bg-${event.color}-500`]"
-              ></div>
-              <div
-                class="h-3 w-3 rounded-full mb-2"
-                :class="[`bg-${event.color}-400`]"
-              ></div>
-              <div
-                class="h-2.5 w-2.5 rounded-full mb-2"
-                :class="[`bg-${event.color}-300`]"
-              ></div>
-              <div
-                class="h-2 w-2 rounded-full"
-                :class="[`bg-${event.color}-200`]"
-              ></div>
-            </div>
-
-            <div
-              :class="[`text-${event.color}-900`, 'pb-5', i % 2 === 0 ? 'text-left' : 'text-right']"
-              :style="{order: 3*i + (i % 2 === 0 ? 3 : 1)}"
-            >
-              <div class="text-lg">{{ event.text }}</div>
-            </div>
-          </template>
-        </div>
-      </div>
-    </section>
-
-    <section id="checklist">
-      <div class="title">
-        <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
-      </div>
-
-      <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
-        <div v-for="(e, i) in todos" :key="i" class="flex items-center space-x-2">
-          <div>
-            <i class="mdi text-4xl" :class="[e.checked ? 'mdi-checkbox-marked-circle-outline' : 'mdi-checkbox-blank-circle-outline']"></i>
+        <div class="container mx-auto flex justify-center items-center">
+          <div class="text-center">
+            <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
+              Luca <span class="font-baskerville font-normal">&</span> Francesca
+            </p>
           </div>
-          <p>
-            {{ e.text }}
+        </div>
+      </section>
+
+      <section id="countdown" class="">
+        <div class="w-full text-center flex items-center justify-center">
+          <div
+            class="w-full flex items-center justify-evenly p-4 bg-oliva-500/50" 
+          >
+            <template v-for="(t, i) in timer" :key="i">
+              <div
+                class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-oliva-300 to-oliva-200 shadow-oliva-800 text-petrolio"
+              >
+                <p class="text-3xl font-bold">{{t.val}}</p>
+                <p class="text-sm">{{t.label}}</p>
+              </div>
+              <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section id="calendar" class="py-6 px-4 flex items-center">
+        <div class="grow shrink basis-0 text-center text-petrolio">
+          <span class="block text-4xl font-semibold ">SEGNA</span>
+          <span class="block text-4xl font-semibold ">LA</span>
+          <span class="block text-4xl font-semibold ">DATA!</span>
+        </div>
+
+        <div class="grow basis-0 text-center">
+          <div class="text-xl text-petrolio font-bold mb-2">Giugno</div>
+          <div class="grid grid-cols-7 w-52 mx-auto">
+            <span v-for="(day, i) in days" :key="i" class=""> {{ day }} </span>
+            <!-- </div>
+
+          <div class="grid grid-cols-7"> -->
+            <span class="leading-9"></span>
+            <span class="leading-9"></span>
+            <span
+              v-for="(num) in 30"
+              :key="`day_${num}`"
+              class="relative leading-9"
+            >
+              <i
+                v-if="num === 4"
+                class="mdi mdi-heart absolute -left-0.5 -top-0.5 h-6 w-6 text-red-800 text-4xl"
+                aria-hidden
+              ></i>
+              <span
+                class="relative font-semibold"
+                :class="[num === 4 ? 'text-neutral-50' : '']"
+                >{{ num }}</span
+              >
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="our_story shadow-grey-400">
+        <div class="title">
+          <h2 class="text-4xl">COME È NATA</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:space-x-6">
+          <div>
+            <figure class="block relative">
+              <img src="images/our_story.jpg" class="object-cover"/>
+            </figure>
+          </div>
+          
+          <p class="text-lg p-6">
+            Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
+            il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
+            avvicinava...piena stagione sciistica pensò. Questo sarà il mio
+            approccio! "Ciao, ho visto che sai sciare, vai a fare la vacanza di
+            sci con Moscatelli?" Francesca non sapeva se ridere o piangere a
+            questo messaggio, in fondo...lui doveva aver guardato un po' di sue
+            foto su facebook per capire che sciava. Ma come aveva fatto a non
+            accorgersi che questo stesso anno si era rotta un ginocchio mentre
+            sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei ricci
+            ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da quel
+            giorno tutto è cambiato nelle loro vite, si sono conosciuti, si sono
+            piaciuti e si sono innamorati, ogni giorno di più. Hanno litigato
+            tante volte e altrettante volte si sono chiesti se stare insieme era
+            la cosa giusta, ma alla fine hanno capito che l'unica cosa che
+            volevano era passare la loro vita insieme.
           </p>
         </div>
-      </div>
-      
-    </section>
+      </section>
 
+      <section id="timeline">
+        <div class="title">
+          <h2 class="text-4xl">LA NOSTRA STORIA</h2>
+        </div>
+        <div
+          class="container relative mx-auto bg-rosa-400 shadow-md shadow-grey-400"
+        >
+          <!-- <div
+            class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"
+          ></div> -->
+          <div
+            class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-4 gap-y-2 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
+            id="events"
+          >
+            <template v-for="(event, i) in events" :key="`event_${i}`">
+              <div
+                :class="[`text-${event.color}-600`, 'pb-5', i % 2 === 0 ? 'text-right' : 'text-left']"
+                :style="{order: 3*i + (i % 2 === 0 ? 1 : 3)}"
+              >
+                <div class="uppercase text-xl">{{ event.month }}</div>
+                <div class="uppercase text-5xl font-bold">{{ event.year }}</div>
+              </div>
 
-    <section id="partecipations">
-      <div class="title">
-        <h2 class="text-4xl">PARTECIPAZIONI</h2>
-      </div>
+              <div
+                class="flex flex-col justify-center items-center"
+                :style="{order: 3*i + 2}"
+              >
+                <div
+                  class="h-2.5 w-2.5 rounded-full mb-2"
+                  :class="[`bg-${event.color}-300`]"
+                ></div>
+                <div
+                  class="h-3 w-3 rounded-full mb-2"
+                  :class="[`bg-${event.color}-400`]"
+                ></div>
+                <div
+                  class="h-3.5 w-3.5 rounded-full mb-2"
+                  :class="[`bg-${event.color}-500`]"
+                ></div>
+                <div
+                  class="h-3 w-3 rounded-full mb-2"
+                  :class="[`bg-${event.color}-400`]"
+                ></div>
+                <div
+                  class="h-2.5 w-2.5 rounded-full mb-2"
+                  :class="[`bg-${event.color}-300`]"
+                ></div>
+                <div
+                  class="h-2 w-2 rounded-full"
+                  :class="[`bg-${event.color}-200`]"
+                ></div>
+              </div>
 
-      <div class="flex flex-col items-center">
-        <div class="my-4 flex flex flex-col items-center">
-          <figure class="">
-            <img src="images/partecipations/chiesa_green.png">
-          </figure>
-          
-          <div class="text-2xl text-center my-2">
-            <p class="text-3xl">ore 11</p>
-            <p>Chiesa Ss Nazaro e Celso</p>
+              <div
+                :class="[`text-${event.color}-900`, 'pb-5', i % 2 === 0 ? 'text-left' : 'text-right']"
+                :style="{order: 3*i + (i % 2 === 0 ? 3 : 1)}"
+              >
+                <div class="text-lg">{{ event.text }}</div>
+              </div>
+            </template>
           </div>
-          
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        
+        </div>
+      </section>
+
+      <section id="checklist">
+        <div class="title">
+          <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
         </div>
 
-        <div class="mt-6 flex flex flex-col items-center">
-          <div>
-            <figure class="inline-block">
-              <img src="images/partecipations/ristorante.png">
-            </figure>
-            <figure class="inline-block">
-              <img src="images/partecipations/torta.png">
-            </figure>
+        <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
+          <div v-for="(e, i) in todos" :key="i" class="flex items-center space-x-2">
+            <div>
+              <i class="mdi text-4xl" :class="[e.checked ? 'mdi-checkbox-marked-circle-outline' : 'mdi-checkbox-blank-circle-outline']"></i>
+            </div>
+            <p>
+              {{ e.text }}
+            </p>
           </div>
-          
-          <div class="text-2xl text-center my-2">
-            <p>La Barcella</p>
+        </div>
+        
+      </section>
+
+
+      <section id="partecipations" class="my-6">
+        <div class="title">
+          <h2 class="text-4xl">PARTECIPAZIONI</h2>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="my-4 flex flex flex-col items-center">
+            <figure class="">
+              <img src="images/partecipations/chiesa_green.png">
+            </figure>
+            
+            <div class="text-2xl text-center my-2">
+              <p class="text-3xl">ore 11</p>
+              <p>Chiesa Ss Nazaro e Celso</p>
+            </div>
+            
+            <div class="googlemap">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit" class="w-[90vw] h-64 md:w-[85vw] md:h-80" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
           </div>
+
+          <div class="mt-6 flex flex flex-col items-center">
+            <div>
+              <figure class="inline-block">
+                <img src="images/partecipations/ristorante.png">
+              </figure>
+              <figure class="inline-block">
+                <img src="images/partecipations/torta.png">
+              </figure>
+            </div>
+            
+            <div class="text-2xl text-center my-2">
+              <p>La Barcella</p>
+            </div>
+            
+            <div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11201.600014391748!2d8.851232!3d45.4214374!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c43808c6f4457fb!2sLa%20Barcella!5e0!3m2!1sit!2sit!4v1644963587791!5m2!1sit!2sit" class="w-[90vw] h-64 md:w-[85vw] md:h-80" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
           
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
         
         </div>
-      
-      </div>
-      
-      
-    </section>
+        
+        
+      </section>
+    </div>
 
     <script>
       const { ref, reactive } = Vue;
