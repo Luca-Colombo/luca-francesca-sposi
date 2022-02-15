@@ -10,23 +10,26 @@
       tailwind.config = {
         theme: {
           extend: {
+            colors: {
+              'oliva': {  DEFAULT: '#658C7C',  '50': '#CDDBD6',  '100': '#C2D3CC',  '200': '#AAC2B8',  '300': '#92B0A4',  '400': '#7A9F90',  '500': '#658C7C',  '600': '#4D6B5F',  '700': '#364B42',  '800': '#1E2A25',  '900': '#070A09'},
+              'rosa': {  DEFAULT: '#F9D5CD',  '50': '#FFFFFF',  '100': '#FFFFFF',  '200': '#FFFFFF',  '300': '#FFFFFF',  '400': '#FDF4F1',  '500': '#F9D5CD',  '600': '#F3AB9B',  '700': '#ED8169',  '800': '#E75737',  '900': '#CD3919'},
+              'petrolio': {  DEFAULT: '#123243',  '50': '#419CCC',  '100': '#3592C4',  '200': '#2C7AA3',  '300': '#236283',  '400': '#1B4A63',  '500': '#123243',  '600': '#061117',  '700': '#000000',  '800': '#000000',  '900': '#000000'},
+            },
             fontFamily: {
-              handwrite: ["Rouge Script", "cursive"],
+              handwrite: ["Parisienne", "cursive"],
+              baskerville: ["Libre Baskerville", "serif"],
             },
           },
         },
       };
     </script>
-    <!-- <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
       @layer components {
-        #events:nth-child(3n + 1) {
-          @apply justify-self-end text-right col-start-1 col-end-2;
-        }
-        #events:nth-child(3n + 0) {
-          @apply justify-self-end text-right col-start-1 col-end-2;
+        .title {
+          @apply text-center p-4 bg-oliva-600 text-neutral-50
         }
       }
-    </style> -->
+    </style>
     <style>
       .grid-timeline {
         /* display: grid; */
@@ -43,10 +46,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Parisienne&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@6.4.95/css/materialdesignicons.min.css"
@@ -169,13 +169,31 @@
       <div class="container mx-auto flex justify-center items-center">
         <div class="text-center">
           <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
-            Luca & Francesca
+            Luca <span class="font-baskerville font-normal">&</span> Francesca
           </p>
         </div>
       </div>
     </section>
 
-    <section id="calendar" class="px-4 pt-8 flex items-center">
+    <section id="countdown" class="pb-6">
+      <div class="w-full text-center flex items-center justify-center">
+        <div
+          class="w-full flex items-center justify-evenly p-4 bg-oliva-100"
+        >
+          <template v-for="(t, i) in timer" :key="i">
+            <div
+              class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-oliva-300 to-oliva-200 shadow-oliva-800"
+            >
+              <p class="text-3xl font-bold">{{t.val}}</p>
+              <p class="text-sm">{{t.label}}</p>
+            </div>
+            <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar" class="pb-6 px-4 flex items-center">
       <div class="grow shrink basis-0 text-center">
         <span class="block text-4xl font-semibold text-neutral-900">SEGNA</span>
         <span class="block text-4xl font-semibold text-neutral-900">LA</span>
@@ -210,26 +228,8 @@
       </div>
     </section>
 
-    <section id="countdown" class="p-4 pt-6 pb-6">
-      <div class="w-full text-center flex items-center justify-center">
-        <div
-          class="w-full flex items-center justify-evenly rounded-lg p-4 bg-pink-100"
-        >
-          <template v-for="(t, i) in timer" :key="i">
-            <div
-              class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-pink-300 to-pink-200 shadow-purple-800"
-            >
-              <p class="text-2xl font-bold">{{t.val}}</p>
-              <p class="text-sm">{{t.label}}</p>
-            </div>
-            <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
-          </template>
-        </div>
-      </div>
-    </section>
-
     <section id="our_story">
-      <div class="text-center p-4 bg-teal-900 text-neutral-50">
+      <div class="title">
         <h2 class="text-4xl">COME È NATA</h2>
       </div>
 
@@ -261,7 +261,7 @@
     </section>
 
     <section id="timeline">
-      <div class="text-center p-4 bg-teal-900 text-neutral-50">
+      <div class="title">
         <h2 class="text-4xl">LA NOSTRA STORIA</h2>
       </div>
       <div
@@ -325,7 +325,7 @@
     </section>
 
     <section id="checklist">
-      <div class="text-center p-4 bg-teal-900 text-neutral-50">
+      <div class="title">
         <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
       </div>
 
@@ -339,6 +339,50 @@
           </p>
         </div>
       </div>
+      
+    </section>
+
+
+    <section id="partecipations">
+      <div class="title">
+        <h2 class="text-4xl">PARTECIPAZIONI</h2>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="my-4 flex flex flex-col items-center">
+          <figure class="">
+            <img src="images/partecipations/chiesa_green.png">
+          </figure>
+          
+          <div class="text-2xl text-center my-2">
+            <p class="text-3xl">ore 11</p>
+            <p>Chiesa Ss Nazaro e Celso</p>
+          </div>
+          
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+        </div>
+
+        <div class="mt-6 flex flex flex-col items-center">
+          <div>
+            <figure class="inline-block">
+              <img src="images/partecipations/ristorante.png">
+            </figure>
+            <figure class="inline-block">
+              <img src="images/partecipations/torta.png">
+            </figure>
+          </div>
+          
+          <div class="text-2xl text-center my-2">
+            <p>La Barcella</p>
+          </div>
+          
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+        </div>
+      
+      </div>
+      
       
     </section>
 
@@ -520,11 +564,11 @@
             },
             {
               text: "Fiori",
-              checked: false
+              checked: true
             },
             {
               text: "Invitati",
-              checked: false
+              checked: true
             },
             {
               text: "Partecipazioni",
@@ -540,7 +584,7 @@
             },
             {
               text: "DJ",
-              checked: false
+              checked: true
             },
             {
               text: "Abito sposa",
@@ -556,7 +600,7 @@
             },
             {
               text: "Casa",
-              checked: false
+              checked: true
             },
             {
               text: "Mobili",
