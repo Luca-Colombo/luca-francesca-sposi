@@ -11,9 +11,45 @@
         theme: {
           extend: {
             colors: {
-              'oliva': {  DEFAULT: '#658C7C',  '50': '#CDDBD6',  '100': '#C2D3CC',  '200': '#AAC2B8',  '300': '#92B0A4',  '400': '#7A9F90',  '500': '#658C7C',  '600': '#4D6B5F',  '700': '#364B42',  '800': '#1E2A25',  '900': '#070A09'},
-              'rosa': {  DEFAULT: '#F9D5CD',  '50': '#FFFFFF',  '100': '#FFFFFF',  '200': '#FFFFFF',  '300': '#FFFFFF',  '400': '#FDF4F1',  '500': '#F9D5CD',  '600': '#F3AB9B',  '700': '#ED8169',  '800': '#E75737',  '900': '#CD3919'},
-              'petrolio': {  DEFAULT: '#123243',  '50': '#419CCC',  '100': '#3592C4',  '200': '#2C7AA3',  '300': '#236283',  '400': '#1B4A63',  '500': '#123243',  '600': '#061117',  '700': '#000000',  '800': '#000000',  '900': '#000000'},
+              oliva: {
+                DEFAULT: "#658C7C",
+                50: "#CDDBD6",
+                100: "#C2D3CC",
+                200: "#AAC2B8",
+                300: "#92B0A4",
+                400: "#7A9F90",
+                500: "#658C7C",
+                600: "#4D6B5F",
+                700: "#364B42",
+                800: "#1E2A25",
+                900: "#070A09",
+              },
+              rosa: {
+                DEFAULT: "#F9D5CD",
+                50: "#FFFFFF",
+                100: "#FFFFFF",
+                200: "#FFFFFF",
+                300: "#FFFFFF",
+                400: "#FDF4F1",
+                500: "#F9D5CD",
+                600: "#F3AB9B",
+                700: "#ED8169",
+                800: "#E75737",
+                900: "#CD3919",
+              },
+              petrolio: {
+                DEFAULT: "#123243",
+                50: "#419CCC",
+                100: "#3592C4",
+                200: "#2C7AA3",
+                300: "#236283",
+                400: "#1B4A63",
+                500: "#123243",
+                600: "#061117",
+                700: "#000000",
+                800: "#000000",
+                900: "#000000",
+              },
             },
             fontFamily: {
               handwrite: ["Parisienne", "cursive"],
@@ -26,7 +62,7 @@
     <style type="text/tailwindcss">
       @layer components {
         .title {
-          @apply text-center p-4 bg-oliva-600 text-neutral-50
+          @apply text-center p-4 bg-oliva-600 text-neutral-50;
         }
       }
     </style>
@@ -42,12 +78,14 @@
       .grid-area-right {
         grid-area: right;
       }
-
     </style>
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Parisienne&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@6.4.95/css/materialdesignicons.min.css"
@@ -164,14 +202,15 @@
     </nav>
 
     <div class="bg-rosa-400">
-
       <section
         class="bg-cover bg-center h-screen flex justify-center"
         style="background-image: url(images/hero.jpg)"
       >
         <div class="container mx-auto flex justify-center items-center">
           <div class="text-center">
-            <p class="font-handwrite text-8xl <sm:text-6xl text-white font-bold">
+            <p
+              class="font-handwrite text-8xl <sm:text-6xl text-white font-bold"
+            >
               Luca <span class="font-baskerville font-normal">&</span> Francesca
             </p>
           </div>
@@ -181,7 +220,7 @@
       <section id="countdown" class="">
         <div class="w-full text-center flex items-center justify-center">
           <div
-            class="w-full flex items-center justify-evenly p-4 bg-oliva-500/50" 
+            class="w-full flex items-center justify-evenly p-4 bg-oliva-500/50"
           >
             <template v-for="(t, i) in timer" :key="i">
               <div
@@ -198,9 +237,9 @@
 
       <section id="calendar" class="py-6 px-4 flex items-center">
         <div class="grow shrink basis-0 text-center text-petrolio">
-          <span class="block text-4xl font-semibold ">SEGNA</span>
-          <span class="block text-4xl font-semibold ">LA</span>
-          <span class="block text-4xl font-semibold ">DATA!</span>
+          <span class="block text-4xl font-semibold">SEGNA</span>
+          <span class="block text-4xl font-semibold">LA</span>
+          <span class="block text-4xl font-semibold">DATA!</span>
         </div>
 
         <div class="grow basis-0 text-center">
@@ -240,10 +279,10 @@
         <div class="flex flex-col md:flex-row md:space-x-6">
           <div>
             <figure class="block relative">
-              <img src="images/our_story.jpg" class="object-cover"/>
+              <img src="images/our_story.jpg" class="object-cover" />
             </figure>
           </div>
-          
+
           <p class="text-lg p-6">
             Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
             il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
@@ -253,13 +292,13 @@
             questo messaggio, in fondo...lui doveva aver guardato un po' di sue
             foto su facebook per capire che sciava. Ma come aveva fatto a non
             accorgersi che questo stesso anno si era rotta un ginocchio mentre
-            sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei ricci
-            ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da quel
-            giorno tutto è cambiato nelle loro vite, si sono conosciuti, si sono
-            piaciuti e si sono innamorati, ogni giorno di più. Hanno litigato
-            tante volte e altrettante volte si sono chiesti se stare insieme era
-            la cosa giusta, ma alla fine hanno capito che l'unica cosa che
-            volevano era passare la loro vita insieme.
+            sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei
+            ricci ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da
+            quel giorno tutto è cambiato nelle loro vite, si sono conosciuti, si
+            sono piaciuti e si sono innamorati, ogni giorno di più. Hanno
+            litigato tante volte e altrettante volte si sono chiesti se stare
+            insieme era la cosa giusta, ma alla fine hanno capito che l'unica
+            cosa che volevano era passare la loro vita insieme.
           </p>
         </div>
       </section>
@@ -334,18 +373,52 @@
         </div>
 
         <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
-          <div v-for="(e, i) in todos" :key="i" class="flex items-center space-x-2">
+          <div
+            v-for="(e, i) in todos"
+            :key="i"
+            class="flex items-center space-x-2"
+          >
             <div>
-              <i class="mdi text-4xl" :class="[e.checked ? 'mdi-checkbox-marked-circle-outline' : 'mdi-checkbox-blank-circle-outline']"></i>
+              <!-- <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 52 52"
+                class="w-7 fill-petrolio"
+              >
+              <path d="M 22.669922 0.056640625 A 22.612173 22.612173 0 0 0 0.056640625 22.669922 A 22.612173 22.612173 0 0 0 22.669922 45.28125 A 22.612173 22.612173 0 0 0 45.28125 22.669922 A 22.612173 22.612173 0 0 0 22.669922 0.056640625 z M 22.669922 5.9941406 A 16.674656 16.674656 0 0 1 39.34375 22.669922 A 16.674656 16.674656 0 0 1 22.669922 39.34375 A 16.674656 16.674656 0 0 1 5.9941406 22.669922 A 16.674656 16.674656 0 0 1 22.669922 5.9941406 z " style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#91c2e1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.30000001;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+
+                <svg v-if="e.checked"  class="fill-rosa-700">
+                  <path id="path4549" d="m 43.296369,3.0730864 c -0.828399,0 -1.625522,0.1867697 -2.369026,0.555841 C 31.884649,8.094422 25.738227,16.613445 22.531864,22.059257 l -5.921226,-4.194723 c -0.910614,-0.646098 -1.982083,-0.987467 -3.096445,-0.987467 -1.737227,0 -3.374367,0.846273 -4.3779185,2.262684 -1.7095239,2.411921 -1.1375974,5.765734 1.2752165,7.474364 l 7.304574,5.175041 c 1.605862,1.137598 3.449431,1.739014 5.33232,1.739014 0.66129,0 1.326155,-0.07507 1.978508,-0.223409 2.549541,-0.579969 4.779161,-2.293961 6.116933,-4.702308 C 33.479788,24.393432 38.475208,16.800215 45.67612,13.243547 46.961167,12.60996 47.920931,11.51347 48.380259,10.156932 48.840481,8.8003937 48.743969,7.3455558 48.109488,6.0614022 47.198874,4.2178329 45.355305,3.0730864 43.296369,3.0730864 Z"/>
+                </svg>
+              </svg> -->
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-8 fill-petrolio"
+              >
+                <g v-if="e.checked">
+                  <path
+                    d="m 20,12 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 c 0.76,0 1.5,0.11 2.2,0.31 L 15.77,2.74 C 14.61,2.26 13.34,2 12,2 A 10,10 0 0 0 2,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12"
+                  />
+
+                  <svg class="fill-rosa-700">
+                    <path
+                      d="M 7.91,10.08 6.5,11.5 11,16 21,6 19.59,4.58 11,13.17 Z"
+                    />
+                  </svg>
+                </g>
+                <path
+                  v-else
+                  d="M 12,20 A 8,8 0 0 1 4.0000001,12 8,8 0 0 1 12,4 a 8,8 0 0 1 8,8 8,8 0 0 1 -8,8 M 12,2 A 10,10 0 0 0 2.0000001,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12 10,10 0 0 0 12,2 Z"
+                  id="path823"
+                />
+              </svg>
             </div>
-            <p>
-              {{ e.text }}
-            </p>
+            <p class="text-petrolio">{{ e.text }}</p>
           </div>
         </div>
-        
       </section>
-
 
       <section id="partecipations" class="my-6">
         <div class="title">
@@ -355,42 +428,50 @@
         <div class="flex flex-col items-center">
           <div class="my-4 flex flex flex-col items-center">
             <figure class="">
-              <img src="images/partecipations/chiesa_green.png">
+              <img src="images/partecipations/chiesa_green.png" />
             </figure>
-            
+
             <div class="text-2xl text-center my-2">
               <p class="text-3xl">ore 11</p>
               <p>Chiesa Ss Nazaro e Celso</p>
             </div>
-            
-            <div class="googlemap">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit" class="w-[90vw] h-64 md:w-[85vw] md:h-80" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"
+                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
             </div>
           </div>
 
           <div class="mt-6 flex flex flex-col items-center">
             <div>
               <figure class="inline-block">
-                <img src="images/partecipations/ristorante.png">
+                <img src="images/partecipations/ristorante.png" />
               </figure>
               <figure class="inline-block">
-                <img src="images/partecipations/torta.png">
+                <img src="images/partecipations/torta.png" />
               </figure>
             </div>
-            
+
             <div class="text-2xl text-center my-2">
               <p>La Barcella</p>
             </div>
-            
+
             <div>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11201.600014391748!2d8.851232!3d45.4214374!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c43808c6f4457fb!2sLa%20Barcella!5e0!3m2!1sit!2sit!4v1644963587791!5m2!1sit!2sit" class="w-[90vw] h-64 md:w-[85vw] md:h-80" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11201.600014391748!2d8.851232!3d45.4214374!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c43808c6f4457fb!2sLa%20Barcella!5e0!3m2!1sit!2sit!4v1644963587791!5m2!1sit!2sit"
+                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
             </div>
-          
           </div>
-        
         </div>
-        
-        
       </section>
     </div>
 
@@ -538,81 +619,80 @@
         },
       }).mount("#timeline");
 
-
       Vue.createApp({
         setup() {
           const todos = reactive([
             {
               text: "Anello",
-              checked: true
+              checked: true,
             },
             {
               text: "Proposta",
-              checked: true
+              checked: true,
             },
             {
               text: "Francesca dice di sì!",
-              checked: true
+              checked: true,
             },
             {
               text: "Data",
-              checked: true
+              checked: true,
             },
             {
               text: "Chiesa",
-              checked: true
+              checked: true,
             },
             {
               text: "Testimoni",
-              checked: true
+              checked: true,
             },
             {
               text: "Location",
-              checked: true
+              checked: true,
             },
             {
               text: "Fiori",
-              checked: true
+              checked: true,
             },
             {
               text: "Invitati",
-              checked: true
+              checked: true,
             },
             {
               text: "Partecipazioni",
-              checked: false
+              checked: false,
             },
             {
               text: "Bomboniere",
-              checked: false
+              checked: false,
             },
             {
               text: "Fotografo",
-              checked: true
+              checked: true,
             },
             {
               text: "DJ",
-              checked: true
+              checked: true,
             },
             {
               text: "Abito sposa",
-              checked: true
+              checked: true,
             },
             {
               text: "Abito sposo",
-              checked: false
+              checked: false,
             },
             {
               text: "Fedi",
-              checked: false
+              checked: false,
             },
             {
               text: "Casa",
-              checked: true
+              checked: true,
             },
             {
               text: "Mobili",
-              checked: false
+              checked: false,
             },
           ]);
 
