@@ -52,8 +52,9 @@
               },
             },
             fontFamily: {
-              handwrite: ["Parisienne", "cursive"],
+              parisienne: ["Parisienne", "cursive"],
               baskerville: ["Libre Baskerville", "serif"],
+              limelight: ["Limelight", "cursive"],
             },
           },
         },
@@ -83,7 +84,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Parisienne&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Limelight&family=Parisienne&display=swap"
       rel="stylesheet"
     />
     <link
@@ -209,7 +210,7 @@
         <div class="container mx-auto flex justify-center items-center">
           <div class="text-center">
             <p
-              class="font-handwrite text-8xl <sm:text-6xl text-white font-bold"
+              class="font-parisienne text-8xl <sm:text-6xl text-white font-bold"
             >
               Luca <span class="font-baskerville font-normal">&</span> Francesca
             </p>
@@ -217,25 +218,51 @@
         </div>
       </section>
 
-      <section id="countdown" class="">
+      <section id="countdown" class="bg-oliva-400 py-10">
         <div class="w-full text-center flex items-center justify-center">
-          <div
-            class="w-full flex items-center justify-evenly p-4 bg-oliva-500/50"
-          >
+          <div class="w-full flex items-center justify-evenly p-4">
             <template v-for="(t, i) in timer" :key="i">
               <div
-                class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-oliva-300 to-oliva-200 shadow-oliva-800 text-petrolio"
+                class="text-white"
+                :class="[i === 's' ? 'hidden sm:block' : 'block']"
               >
-                <p class="text-3xl font-bold">{{t.val}}</p>
-                <p class="text-sm">{{t.label}}</p>
+                <p class="text-5xl font-limelight">{{t.val}}</p>
+                <p class="text-5xl text-petrolio font-parisienne -mt-5">
+                  {{t.label}}
+                </p>
               </div>
-              <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
+              <div v-if="i !== 's'" class="hidden text-2xl mx-1">:</div>
             </template>
           </div>
         </div>
       </section>
 
-      <section id="calendar" class="py-6 px-4 flex items-center">
+      <section
+        id="save-the-date"
+        class="h-60 md:h-80 bg-cover bg-center"
+        style="
+          background-image: linear-gradient(
+              rgba(18, 50, 67, 0.3),
+              rgba(18, 50, 67, 0.3)
+            ),
+            url(images/save_the_date.jpg);
+        "
+      >
+        <div class="h-full flex items-center">
+          <div class="text-center text-4xl flex-1">
+            <p class="font-parisienne text-white text-5xl">Save</p>
+            <p class="font-limelight text-rosa -mt-4">the date!</p>
+          </div>
+
+          <div class="relative text-center text-5xl leading-none flex-1">
+            <p class="relative font-limelight text-rosa">04</p>
+            <p class="relative font-parisienne text-white -mt-5 z-10">giugno</p>
+            <p class="relative font-limelight text-rosa -mt-3">2022</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="calendar" class="py-6 px-4 flex items-center hidden">
         <div class="grow shrink basis-0 text-center text-petrolio">
           <span class="block text-4xl font-semibold">SEGNA</span>
           <span class="block text-4xl font-semibold">LA</span>
@@ -271,50 +298,68 @@
         </div>
       </section>
 
-      <section id="our_story shadow-grey-400">
-        <div class="title">
-          <h2 class="text-4xl">COME È NATA</h2>
-        </div>
-
+      <section id="our_story" class="p-10">
         <div class="flex flex-col md:flex-row md:space-x-6">
           <div>
             <figure class="block relative">
-              <img src="images/our_story.jpg" class="object-cover" />
+              <img src="images/beginning.jpg" class="object-cover" />
             </figure>
           </div>
 
-          <p class="text-lg p-6">
-            Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
-            il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
-            avvicinava...piena stagione sciistica pensò. Questo sarà il mio
-            approccio! "Ciao, ho visto che sai sciare, vai a fare la vacanza di
-            sci con Moscatelli?" Francesca non sapeva se ridere o piangere a
-            questo messaggio, in fondo...lui doveva aver guardato un po' di sue
-            foto su facebook per capire che sciava. Ma come aveva fatto a non
-            accorgersi che questo stesso anno si era rotta un ginocchio mentre
-            sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei
-            ricci ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da
-            quel giorno tutto è cambiato nelle loro vite, si sono conosciuti, si
-            sono piaciuti e si sono innamorati, ogni giorno di più. Hanno
-            litigato tante volte e altrettante volte si sono chiesti se stare
-            insieme era la cosa giusta, ma alla fine hanno capito che l'unica
-            cosa che volevano era passare la loro vita insieme.
-          </p>
+          <div class="px-6">
+            <h2 class="leading-1">
+              <span class="block font-parisienne text-petrolio text-4xl"
+                >Il nostro</span
+              >
+              <span class="block font-limelight text-oliva text-4xl pl-2 -mt-3"
+                >inizio</span
+              >
+            </h2>
+            <article class="text-sm pt-6">
+              <p>
+                Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di
+                fare il primo passo e scriverle. Il liceo era lo stesso, e
+                l'inverno si avvicinava...piena stagione sciistica pensò. Questo
+                sarà il mio approccio! "Ciao, ho visto che sai sciare, vai a
+                fare la vacanza di sci con Moscatelli?" Francesca non sapeva se
+                ridere o piangere a questo messaggio, in fondo...lui doveva aver
+                guardato un po' di sue foto su facebook per capire che sciava.
+                Ma come aveva fatto a non accorgersi che questo stesso anno si
+                era rotta un ginocchio mentre sciava? Però quel ragazzo le
+                piaceva, sembrava dolce, aveva dei ricci ribelli e due occhi in
+                cui perdersi. Gli avrebbe risposto.
+              </p>
+              <p class="pt-4">
+                Da quel giorno tutto è cambiato nelle loro vite, si sono
+                conosciuti, si sono piaciuti e si sono innamorati, ogni giorno
+                di più. Hanno litigato tante volte e altrettante volte si sono
+                chiesti se stare insieme era la cosa giusta, ma alla fine hanno
+                capito che l'unica cosa che volevano era passare la loro vita
+                insieme.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section id="timeline">
-        <div class="title">
-          <h2 class="text-4xl">LA NOSTRA STORIA</h2>
-        </div>
-        <div
-          class="container relative mx-auto bg-rosa-400 shadow-md shadow-grey-400"
-        >
-          <!-- <div
-            class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"
-          ></div> -->
+
+      <section
+        id="timeline"
+        class="py-6 bg-cover bg-center"
+        style="
+          background-image: linear-gradient(
+              rgba(18, 50, 67, 0.7),
+              rgba(18, 50, 67, 0.7)
+            ),
+            url(images/our_story.jpg);
+        "
+      >
+          <h2 class="text-center pb-4">
+            <span class="block font-parisienne text-white text-3xl">La nostra</span>
+            <span class="block font-limelight text-rosa text-3xl -mt-2">storia</span>
+          </h2>
           <div
-            class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-4 gap-y-2 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
+            class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-6 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
             id="events"
           >
             <template v-for="(event, i) in events" :key="`event_${i}`">
@@ -322,57 +367,39 @@
                 :class="[`text-${event.color}-600`, 'pb-5', i % 2 === 0 ? 'text-right' : 'text-left']"
                 :style="{order: 3*i + (i % 2 === 0 ? 1 : 3)}"
               >
-                <div class="uppercase text-xl">{{ event.month }}</div>
-                <div class="uppercase text-5xl font-bold">{{ event.year }}</div>
+                <div class="font-parisienne lowercase text-3xl text-white">{{ event.month }}</div>
+                <div class="font-limelight text-3xl font-bold text-rosa">{{ event.year }}</div>
               </div>
 
               <div
-                class="flex flex-col justify-center items-center"
+                class="flex flex-col justify-center items-center h-full"
                 :style="{order: 3*i + 2}"
               >
-                <div
-                  class="h-2.5 w-2.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-300`]"
-                ></div>
-                <div
-                  class="h-3 w-3 rounded-full mb-2"
-                  :class="[`bg-${event.color}-400`]"
-                ></div>
-                <div
-                  class="h-3.5 w-3.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-500`]"
-                ></div>
-                <div
-                  class="h-3 w-3 rounded-full mb-2"
-                  :class="[`bg-${event.color}-400`]"
-                ></div>
-                <div
-                  class="h-2.5 w-2.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-300`]"
-                ></div>
-                <div
-                  class="h-2 w-2 rounded-full"
-                  :class="[`bg-${event.color}-200`]"
-                ></div>
+                <div class="relative border border-l-2 border-white border-solid h-full">
+                  <div class="w-4 h-4 rounded-full bg-rosa absolute top-1/3 -ml-2"></div>
+                </div>
               </div>
 
               <div
-                :class="[`text-${event.color}-900`, 'pb-5', i % 2 === 0 ? 'text-left' : 'text-right']"
+              class="text-white pb-5"
+                :class="[i % 2 === 0 ? 'text-left' : 'text-right']"
                 :style="{order: 3*i + (i % 2 === 0 ? 3 : 1)}"
               >
-                <div class="text-lg">{{ event.text }}</div>
+                <div class="text">{{ event.text }}</div>
               </div>
             </template>
           </div>
         </div>
       </section>
 
-      <section id="checklist">
-        <div class="title">
-          <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
-        </div>
+      <section id="checklist" class="py-10">
 
-        <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
+        <h2 class="text-center pb-4">
+          <span class="block font-parisienne text-petrolio text-3xl">Wedding</span>
+          <span class="block font-limelight text-oliva text-3xl -mt-2">work in progress</span>
+        </h2>
+
+        <div class="p-4 grid grid-cols-2 gap-x-4 gap-y-2 md:grid-cols-3 md:grid-cols-4">
           <div
             v-for="(e, i) in todos"
             :key="i"
@@ -395,27 +422,30 @@
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                class="w-8 fill-petrolio"
+                class="w-6"
+                :class="[e.checked ? 'fill-oliva' : 'fill-petrolio']"
               >
-                <g v-if="e.checked">
+                <g>
                   <path
-                    d="m 20,12 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 c 0.76,0 1.5,0.11 2.2,0.31 L 15.77,2.74 C 14.61,2.26 13.34,2 12,2 A 10,10 0 0 0 2,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12"
-                  />
-
-                  <svg class="fill-rosa-700">
-                    <path
-                      d="M 7.91,10.08 6.5,11.5 11,16 21,6 19.59,4.58 11,13.17 Z"
-                    />
-                  </svg>
-                </g>
-                <path
-                  v-else
                   d="M 12,20 A 8,8 0 0 1 4.0000001,12 8,8 0 0 1 12,4 a 8,8 0 0 1 8,8 8,8 0 0 1 -8,8 M 12,2 A 10,10 0 0 0 2.0000001,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12 10,10 0 0 0 12,2 Z"
                   id="path823"
                 />
+                  <!-- <path
+                    d="m 20,12 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 c 0.76,0 1.5,0.11 2.2,0.31 L 15.77,2.74 C 14.61,2.26 13.34,2 12,2 A 10,10 0 0 0 2,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12"
+                  /> -->
+                  <svg v-if="e.checked" viewBox="0 0 37 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35.7891 0.222656C36.5898 0.222656 36.9902 0.642578 36.9902 1.48242C36.9902 1.91211 36.8535 2.41016 36.5801 2.97656C36.3262 3.52344 36.1211 3.97266 35.9648 4.32422L20.0566 43.6113L0.779297 0.544922H16.7754L26.0918 22.459L32.625 6.11133C33.3281 4.35352 33.7871 3.08398 34.002 2.30273C34.2168 1.52148 34.4512 0.984375 34.7051 0.691406C34.959 0.378906 35.3203 0.222656 35.7891 0.222656Z" fill="#668172"/>
+                  </svg>
+                    
+                  <!-- <svg class="fill-oliva">
+                    <path
+                      d="M 7.91,10.08 6.5,11.5 11,16 21,6 19.59,4.58 11,13.17 Z"
+                    /> -->
+                  </svg>
+                </g>
               </svg>
             </div>
-            <p class="text-petrolio">{{ e.text }}</p>
+            <p class="pl-2" :class="[e.checked ? 'text-oliva' : 'text-petrolio']">{{ e.text }}</p>
           </div>
         </div>
       </section>
@@ -485,19 +515,19 @@
           const timer = reactive({
             d: {
               val: undefined,
-              label: "Giorni",
+              label: "giorni",
             },
             h: {
               val: undefined,
-              label: "Ore",
+              label: "ore",
             },
             m: {
               val: undefined,
-              label: "Minuti",
+              label: "minuti",
             },
             s: {
               val: undefined,
-              label: "Secondi",
+              label: "secondi",
             },
           });
 
