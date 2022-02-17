@@ -79,6 +79,21 @@
       .grid-area-right {
         grid-area: right;
       }
+
+      #partecipations {
+        position: relative;
+        background-image: url(images/partecipations/foto.jpg);
+        background-color: rgba(101, 140, 124, 0.7);
+      }
+      #partecipations::before {
+        content: "";
+        position: absolute;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(101, 140, 124, 0.8);
+      }
     </style>
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -221,18 +236,13 @@
       <section id="countdown" class="bg-oliva-400 py-10">
         <div class="w-full text-center flex items-center justify-center">
           <div class="w-full flex items-center justify-evenly p-4">
-            <template v-for="(t, i) in timer" :key="i">
-              <div
-                class="text-white"
-                :class="[i === 's' ? 'hidden sm:block' : 'block']"
-              >
+            <div v-for="(t, i) in timer" :key="i" class="text-white" :class="[i === 's' ? 'hidden sm:block' : 'block']">
                 <p class="text-5xl font-limelight">{{t.val}}</p>
                 <p class="text-5xl text-petrolio font-parisienne -mt-5">
                   {{t.label}}
                 </p>
-              </div>
-              <div v-if="i !== 's'" class="hidden text-2xl mx-1">:</div>
-            </template>
+              <!-- <div v-if="i !== 's'" class="text-2xl mx-1">:</div> -->
+            </div>
           </div>
         </div>
       </section>
@@ -450,56 +460,50 @@
         </div>
       </section>
 
-      <section id="partecipations" class="my-6">
-        <div class="title">
-          <h2 class="text-4xl">PARTECIPAZIONI</h2>
-        </div>
+      <section id="partecipations" class="py-10 bg-cover bg-center">
+        <h2 class="relative text-center pb-4 text-4xl">
+          <span class="block font-parisienne text-white ">Il grande</span>
+          <span class="block font-limelight text-rosa -mt-2">giorno</span>
+        </h2>
 
-        <div class="flex flex-col items-center">
+        <div class="relative flex flex-col items-center">
           <div class="my-4 flex flex flex-col items-center">
-            <figure class="">
+            <figure class="w-16">
               <img src="images/partecipations/chiesa_green.png" />
             </figure>
 
-            <div class="text-2xl text-center my-2">
-              <p class="text-3xl">ore 11</p>
-              <p>Chiesa Ss Nazaro e Celso</p>
+            <div class="text-center">
+              <p class="font-limelight text-petrolio text-2xl">ore 11</p>
+              <p class="font-parisienne text-white text-3xl">Chiesa parrocchiale <br> Santi Nazaro e Celso</p>
+              <p class="font-limelight text-petrolio text-xl">Marcallo con Casone</p>
             </div>
 
-            <div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"
-                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
+            <div class="pt-8">
+              <a href="https://goo.gl/maps/hcmTSHeaqVu3qmGs9" class="border border-solid border-rosa px-2 py-1 rounded-md text-rosa text-sm hover:bg-rosa hover:text-petrolio">Come raggiungerci</a>
             </div>
+
           </div>
 
-          <div class="mt-6 flex flex flex-col items-center">
+          <div class="mt-10 flex flex flex-col items-center">
             <div>
-              <figure class="inline-block">
+              <figure class="inline-block w-14">
                 <img src="images/partecipations/ristorante.png" />
               </figure>
-              <figure class="inline-block">
+              <figure class="inline-block w-14">
                 <img src="images/partecipations/torta.png" />
               </figure>
             </div>
 
-            <div class="text-2xl text-center my-2">
-              <p>La Barcella</p>
+            <div class="text-center">
+              <p class="font-parisienne text-white text-3xl">La Barcella</p>
+              <p class="font-limelight text-petrolio text-xl">Robecco sul Naviglio</p>
             </div>
 
-            <div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11201.600014391748!2d8.851232!3d45.4214374!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c43808c6f4457fb!2sLa%20Barcella!5e0!3m2!1sit!2sit!4v1644963587791!5m2!1sit!2sit"
-                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
+            <div class="pt-8 flex flex-col items-center">
+              <a href="mailto:invitati@lucaefrancescasposi.it" class="border border-solid border-rosa px-2 py-1 rounded-md text-rosa text-sm hover:bg-rosa hover:text-petrolio">Confermaci la tua presenza</a>
+              <a href="https://goo.gl/maps/xon2af8emactoSEP6" class="mt-4 border border-solid border-rosa px-2 py-1 rounded-md text-rosa text-sm hover:bg-rosa hover:text-petrolio">Come raggiungerci</a>
             </div>
+
           </div>
         </div>
       </section>
