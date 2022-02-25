@@ -87,6 +87,20 @@
         grid-area: right;
       }
 
+      .carousel-enter-active,
+      .carousel-leave-active {
+        transition: all 500ms ease-in-out;
+      }
+      .carousel-enter-from {
+        opacity: 0;
+        /* transform: translateX(50%); */
+      }
+
+      .carousel-leave-to {
+        opacity: 0;
+        /* transform: translateX(-50%); */
+      }
+
       #hero {
         position: relative;
         background-image: linear-gradient(
@@ -94,6 +108,13 @@
               rgba(18, 50, 67, 0.1)
             ), url(images/hero.jpg);
         
+      }
+      #save-the-date {
+        background-image: linear-gradient(
+              rgba(18, 50, 67, 0.3),
+              rgba(18, 50, 67, 0.3)
+            ),
+            url(images/save_the_date.jpg);
       }
       #partecipations {
         position: relative;
@@ -181,7 +202,6 @@
                 aria-current="page"
                 >La data</a
               >
-              <!-- <div class="hidden md:block md:w-full h-0.5 bg-rosa transition-al absolute bottom-0" ></div> -->
               <hr class="w-1/2 mx-auto md:hidden">
             </li>
             <li class="menuItem relative group w-full text-center">
@@ -243,7 +263,6 @@
                 <p class="text-5xl text-petrolio font-parisienne -mt-5">
                   {{t.label}}
                 </p>
-              <!-- <div v-if="i !== 's'" class="text-2xl mx-1">:</div> -->
             </div>
           </div>
         </div>
@@ -252,13 +271,6 @@
       <section
         id="save-the-date"
         class="h-60 md:h-80 bg-cover md:bg-center"
-        style="
-          background-image: linear-gradient(
-              rgba(18, 50, 67, 0.3),
-              rgba(18, 50, 67, 0.3)
-            ),
-            url(images/save_the_date.jpg);
-        "
       >
         <div class="h-full flex items-center">
           <div class="text-center text-4xl flex-1">
@@ -386,18 +398,6 @@
             class="flex items-center space-x-2"
           >
             <div>
-              <!-- <svg
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 52 52"
-                class="w-7 fill-petrolio"
-              >
-              <path d="M 22.669922 0.056640625 A 22.612173 22.612173 0 0 0 0.056640625 22.669922 A 22.612173 22.612173 0 0 0 22.669922 45.28125 A 22.612173 22.612173 0 0 0 45.28125 22.669922 A 22.612173 22.612173 0 0 0 22.669922 0.056640625 z M 22.669922 5.9941406 A 16.674656 16.674656 0 0 1 39.34375 22.669922 A 16.674656 16.674656 0 0 1 22.669922 39.34375 A 16.674656 16.674656 0 0 1 5.9941406 22.669922 A 16.674656 16.674656 0 0 1 22.669922 5.9941406 z " style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#91c2e1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.30000001;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-
-                <svg v-if="e.checked"  class="fill-rosa-700">
-                  <path id="path4549" d="m 43.296369,3.0730864 c -0.828399,0 -1.625522,0.1867697 -2.369026,0.555841 C 31.884649,8.094422 25.738227,16.613445 22.531864,22.059257 l -5.921226,-4.194723 c -0.910614,-0.646098 -1.982083,-0.987467 -3.096445,-0.987467 -1.737227,0 -3.374367,0.846273 -4.3779185,2.262684 -1.7095239,2.411921 -1.1375974,5.765734 1.2752165,7.474364 l 7.304574,5.175041 c 1.605862,1.137598 3.449431,1.739014 5.33232,1.739014 0.66129,0 1.326155,-0.07507 1.978508,-0.223409 2.549541,-0.579969 4.779161,-2.293961 6.116933,-4.702308 C 33.479788,24.393432 38.475208,16.800215 45.67612,13.243547 46.961167,12.60996 47.920931,11.51347 48.380259,10.156932 48.840481,8.8003937 48.743969,7.3455558 48.109488,6.0614022 47.198874,4.2178329 45.355305,3.0730864 43.296369,3.0730864 Z"/>
-                </svg>
-              </svg> -->
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -410,17 +410,8 @@
                   d="M 12,20 A 8,8 0 0 1 4.0000001,12 8,8 0 0 1 12,4 a 8,8 0 0 1 8,8 8,8 0 0 1 -8,8 M 12,2 A 10,10 0 0 0 2.0000001,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12 10,10 0 0 0 12,2 Z"
                   id="path823"
                 />
-                  <!-- <path
-                    d="m 20,12 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 c 0.76,0 1.5,0.11 2.2,0.31 L 15.77,2.74 C 14.61,2.26 13.34,2 12,2 A 10,10 0 0 0 2,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12"
-                  /> -->
                   <svg v-if="e.checked" viewBox="0 0 37 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M35.7891 0.222656C36.5898 0.222656 36.9902 0.642578 36.9902 1.48242C36.9902 1.91211 36.8535 2.41016 36.5801 2.97656C36.3262 3.52344 36.1211 3.97266 35.9648 4.32422L20.0566 43.6113L0.779297 0.544922H16.7754L26.0918 22.459L32.625 6.11133C33.3281 4.35352 33.7871 3.08398 34.002 2.30273C34.2168 1.52148 34.4512 0.984375 34.7051 0.691406C34.959 0.378906 35.3203 0.222656 35.7891 0.222656Z" fill="#668172"/>
-                  </svg>
-                    
-                  <!-- <svg class="fill-oliva">
-                    <path
-                      d="M 7.91,10.08 6.5,11.5 11,16 21,6 19.59,4.58 11,13.17 Z"
-                    /> -->
                   </svg>
                 </g>
               </svg>
@@ -480,7 +471,35 @@
       </section>
 
 
-      <section id="primi-passi"></section>
+      <section id="primi-passi" class="py-10 px-6 lg:w-4/5 xl:w-3/4 mx-auto">
+        <div class="flex flex-col md:flex-row md:space-x-6 items-center">
+          <div class="flex-1 mb-6 md:mb-0">
+            <h2 class="relative text-center pb-4 text-4xl">
+              <span class="block font-parisienne text-petrolio ">I nostri primi</span>
+              <span class="block font-limelight text-oliva -mt-2">passi</span>
+            </h2>
+
+            <p class="text-center">
+              La nostra casa  ancora non esiste, <br>
+              sicuramente sarà piena di amore  e risate <br>
+              ma non si sa di quali altre cose... <br>
+              Se volete darci una mano <br>
+              <span class="font-bold slashed-zero my-8">IT85G0306932570100000002821</span><br>
+              intestato a Luca Colombo
+
+            </p>
+          </div>
+
+          <div id="home-slideshow" class="flex flex-1 relative">
+            <!-- <transition-group name="carousel" tag="figure" class=" w-full">
+              <img v-for="(img,i) in images" :key="i" v-show="i===visibleIndex" :src="img.src" class="">
+            </transition-group> -->
+            <figure>
+              <img src="images/house/salotto.jpg"/>
+            </figure>
+          </div>
+        </div>
+      </section>
     </div>
 
     <script>
@@ -611,7 +630,7 @@
             {
               month: "DICEMBRE",
               year: "2020",
-              text: 'Entrambi hanno un lavoro',
+              text: 'Entrambi abbiamo un lavoro',
               color: "rose",
             },
             {
@@ -665,7 +684,7 @@
             },
             {
               text: "Fiori",
-              checked: true,
+              checked: false,
             },
             {
               text: "Invitati",
@@ -673,7 +692,7 @@
             },
             {
               text: "Partecipazioni",
-              checked: false,
+              checked: true,
             },
             {
               text: "Bomboniere",
@@ -734,6 +753,35 @@
           menuItem.addEventListener("click", toggleMenu);
         }
       )
+
+
+      // Vue.createApp({
+      //   setup() {
+      //     const images = reactive([
+      //       {
+      //         src: "images/house/salotto.jpg"
+      //       },
+      //       {
+      //         src: "images/house/camera.jpg"
+      //       },
+      //     ]);
+
+      //     const visibleIndex = ref(0);
+
+      //     const slide = () => {
+      //       if(visibleIndex.value < images.length - 1)
+      //         visibleIndex.value++;
+      //       else
+      //         visibleIndex.value = 0;
+      //     }
+
+      //     return { images, visibleIndex, slide };
+      //   },
+
+      //   created() {
+      //     setInterval(this.slide, 6000);
+      //   }
+      // }).mount("#primi-passi");
     </script>
   </body>
 </html>
