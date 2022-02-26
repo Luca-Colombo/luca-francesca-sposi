@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Luca & Francesca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -52,8 +56,13 @@
               },
             },
             fontFamily: {
-              handwrite: ["Parisienne", "cursive"],
+              parisienne: ["Parisienne", "cursive"],
               baskerville: ["Libre Baskerville", "serif"],
+              limelight: ["Limelight", "cursive"],
+            },
+            gridTemplateColumns: {
+              '2-auto': 'repeat(2, auto)',
+              '3-auto': '1fr 1fr auto',
             },
           },
         },
@@ -67,6 +76,9 @@
       }
     </style>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       .grid-timeline {
         /* display: grid; */
         grid-template-areas: "left center right";
@@ -78,55 +90,82 @@
       .grid-area-right {
         grid-area: right;
       }
+
+      .carousel-enter-active,
+      .carousel-leave-active {
+        transition: all 500ms ease-in-out;
+      }
+      .carousel-enter-from {
+        opacity: 0;
+        /* transform: translateX(50%); */
+      }
+
+      .carousel-leave-to {
+        opacity: 0;
+        /* transform: translateX(-50%); */
+      }
+
+      #hero {
+        position: relative;
+        background-image: linear-gradient(
+              rgba(18, 50, 67, 0.1),
+              rgba(18, 50, 67, 0.1)
+            ), url(images/hero.jpg);
+        
+      }
+      #save-the-date {
+        background-image: linear-gradient(
+              rgba(18, 50, 67, 0.3),
+              rgba(18, 50, 67, 0.3)
+            ),
+            url(images/save_the_date.jpg);
+      }
+      #partecipations {
+        position: relative;
+        background-image: url(images/partecipations.jpg);
+        background-color: rgba(101, 140, 124, 0.7);
+      }
+      #partecipations::before {
+        content: "";
+        position: absolute;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(101, 140, 124, 0.8);
+      }
+
+      @media (min-width: 768px) { 
+        #hero {
+        background-image: linear-gradient(
+              rgba(18, 50, 67, 0.1),
+              rgba(18, 50, 67, 0.1)
+            ), url(images/hero2.jpg);
+        }
+      }
     </style>
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Parisienne&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Limelight&family=Parisienne&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@mdi/font@6.4.95/css/materialdesignicons.min.css"
     />
   </head>
   <body>
     <nav
-      class="hidden fixed top-0 bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800"
+      class="absolute top-0 w-full z-50 bg-oliva text-white px-2 sm:px-4 md:py-2.5"
     >
       <div
-        class="container flex flex-wrap md:justify-center items-center mx-auto"
+        class="flex flex-wrap justify-between mx-auto"
       >
-        <!-- <a href="#" class="flex">
-        <svg
-          class="mr-3 h-10"
-          viewBox="0 0 52 72"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1.87695 53H28.7791C41.5357 53 51.877 42.7025 51.877 30H24.9748C12.2182 30 1.87695 40.2975 1.87695 53Z"
-            fill="#76A9FA"
-          ></path>
-          <path
-            d="M0.000409561 32.1646L0.000409561 66.4111C12.8618 66.4111 23.2881 55.9849 23.2881 43.1235L23.2881 8.87689C10.9966 8.98066 1.39567 19.5573 0.000409561 32.1646Z"
-            fill="#A4CAFE"
-          ></path>
-          <path
-            d="M50.877 5H23.9748C11.2182 5 0.876953 15.2975 0.876953 28H27.7791C40.5357 28 50.877 17.7025 50.877 5Z"
-            fill="#1C64F2"
-          ></path>
-        </svg>
-        <span
-          class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
-          >FlowBite</span
-        >
-      </a> -->
+        <a href="#" class="md:flex-auto md:pl-8 pl-2 py-1 inline-flex items-center">
+          <img src="images/logo.svg" class="w-20 md:w-28 max-w-28">
+        </a>
         <button
-          data-collapse-toggle="mobile-menu"
+          id="hamburger"
           type="button"
-          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex items-center p-2 ml-3 text-sm text-white md:hidden"
           aria-controls="mobile-menu-2"
           aria-expanded="false"
         >
@@ -156,44 +195,56 @@
             ></path>
           </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+        <div class="hidden w-full md:block md:w-auto md:flex-auto" id="mobile-menu">
           <ul
-            class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+            class="flex flex-col md:h-full md:items-center md:flex-row md:space-x-4 md:text-sm md:font-medium"
           >
-            <li>
+            <li class="menuItem relative group w-full text-center">
               <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                href="#save-the-date"
+                class="block py-2 text-white md:p-0 md:text-white"
                 aria-current="page"
-                >Home</a
+                >La data</a
               >
+              <hr class="w-1/2 mx-auto md:hidden">
             </li>
-            <li>
+            <li class="menuItem relative group w-full text-center">
               <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >About</a
+                href="#our_story"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >Il nostro inizio</a
               >
+              <hr class="w-1/2 mx-auto md:hidden">
             </li>
-            <li>
+            <li class="menuItem relative group w-full text-center">
               <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >Services</a
+                href="#timeline"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >La nostra storia</a
               >
+              <hr class="w-1/2 mx-auto md:hidden">
             </li>
-            <li>
+            <li class="menuItem relative group w-full text-center">
               <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >Pricing</a
+                href="#checklist"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >Work in progress</a
               >
+              <hr class="w-1/2 mx-auto md:hidden">
             </li>
-            <li>
+            <li class="menuItem relative group w-full text-center">
               <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Contact</a
+                href="#partecipations"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >Il grande giorno</a
+              >
+              <hr class="w-1/2 mx-auto md:hidden">
+            </li>
+            <li class="menuItem relative group w-full text-center">
+              <a
+                href="#primi-passi"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >I nostri primi passi</a
               >
             </li>
           </ul>
@@ -201,15 +252,14 @@
       </div>
     </nav>
 
-    <div class="bg-rosa-400">
-      <section
+    <div class="relative">
+      <section id="hero"
         class="bg-cover bg-center h-screen flex justify-center"
-        style="background-image: url(images/hero.jpg)"
       >
         <div class="container mx-auto flex justify-center items-center">
           <div class="text-center">
             <p
-              class="font-handwrite text-8xl <sm:text-6xl text-white font-bold"
+              class="font-parisienne text-8xl <sm:text-6xl text-white font-bold"
             >
               Luca <span class="font-baskerville font-normal">&</span> Francesca
             </p>
@@ -217,259 +267,250 @@
         </div>
       </section>
 
-      <section id="countdown" class="">
+      <section id="countdown" class="bg-oliva-400 py-10">
         <div class="w-full text-center flex items-center justify-center">
-          <div
-            class="w-full flex items-center justify-evenly p-4 bg-oliva-500/50"
-          >
-            <template v-for="(t, i) in timer" :key="i">
-              <div
-                class="min-w-[4rem] rounded-lg shadow-md bg-gradient-to-b from-oliva-300 to-oliva-200 shadow-oliva-800 text-petrolio"
-              >
-                <p class="text-3xl font-bold">{{t.val}}</p>
-                <p class="text-sm">{{t.label}}</p>
-              </div>
-              <div v-if="i !== 's'" class="text-2xl mx-1">:</div>
-            </template>
+          <div class="w-full flex items-center justify-evenly p-4">
+            <div v-for="(t, i) in timer" :key="i" class="text-white" :class="[i === 's' ? 'hidden sm:block' : 'block']">
+                <p class="text-5xl font-limelight">{{t.val}}</p>
+                <p class="text-5xl text-petrolio font-parisienne -mt-5">
+                  {{t.label}}
+                </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="calendar" class="py-6 px-4 flex items-center">
-        <div class="grow shrink basis-0 text-center text-petrolio">
-          <span class="block text-4xl font-semibold">SEGNA</span>
-          <span class="block text-4xl font-semibold">LA</span>
-          <span class="block text-4xl font-semibold">DATA!</span>
-        </div>
+      <section
+        id="save-the-date"
+        class="h-60 md:h-80 bg-cover md:bg-center"
+      >
+        <div class="h-full flex items-center">
+          <div class="text-center text-4xl flex-1">
+            <p class="font-parisienne text-white text-5xl">Save</p>
+            <p class="font-limelight text-rosa -mt-4">the date!</p>
+          </div>
 
-        <div class="grow basis-0 text-center">
-          <div class="text-xl text-petrolio font-bold mb-2">Giugno</div>
-          <div class="grid grid-cols-7 w-52 mx-auto">
-            <span v-for="(day, i) in days" :key="i" class=""> {{ day }} </span>
-            <!-- </div>
-
-          <div class="grid grid-cols-7"> -->
-            <span class="leading-9"></span>
-            <span class="leading-9"></span>
-            <span
-              v-for="(num) in 30"
-              :key="`day_${num}`"
-              class="relative leading-9"
-            >
-              <i
-                v-if="num === 4"
-                class="mdi mdi-heart absolute -left-0.5 -top-0.5 h-6 w-6 text-red-800 text-4xl"
-                aria-hidden
-              ></i>
-              <span
-                class="relative font-semibold"
-                :class="[num === 4 ? 'text-neutral-50' : '']"
-                >{{ num }}</span
-              >
-            </span>
+          <div class="relative text-center text-5xl leading-none flex-1">
+            <p class="relative font-limelight text-rosa">04</p>
+            <p class="relative font-parisienne text-white -mt-6 z-10">giugno</p>
+            <p class="relative font-limelight text-rosa -mt-3">2022</p>
           </div>
         </div>
       </section>
 
-      <section id="our_story shadow-grey-400">
-        <div class="title">
-          <h2 class="text-4xl">COME È NATA</h2>
-        </div>
-
+      <section id="our_story" class="p-10 max-w-screen-md mx-auto">
         <div class="flex flex-col md:flex-row md:space-x-6">
-          <div>
+          <div class="flex items-center mb-8 md:mb-0">
             <figure class="block relative">
-              <img src="images/our_story.jpg" class="object-cover" />
+              <img src="images/beginning.jpg" class="object-cover" />
             </figure>
           </div>
 
-          <p class="text-lg p-6">
-            Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di fare
-            il primo passo e scriverle. Il liceo era lo stesso, e l'inverno si
-            avvicinava...piena stagione sciistica pensò. Questo sarà il mio
-            approccio! "Ciao, ho visto che sai sciare, vai a fare la vacanza di
-            sci con Moscatelli?" Francesca non sapeva se ridere o piangere a
-            questo messaggio, in fondo...lui doveva aver guardato un po' di sue
-            foto su facebook per capire che sciava. Ma come aveva fatto a non
-            accorgersi che questo stesso anno si era rotta un ginocchio mentre
-            sciava? Però quel ragazzo le piaceva, sembrava dolce, aveva dei
-            ricci ribelli e due occhi in cui perdersi. Gli avrebbe risposto. Da
-            quel giorno tutto è cambiato nelle loro vite, si sono conosciuti, si
-            sono piaciuti e si sono innamorati, ogni giorno di più. Hanno
-            litigato tante volte e altrettante volte si sono chiesti se stare
-            insieme era la cosa giusta, ma alla fine hanno capito che l'unica
-            cosa che volevano era passare la loro vita insieme.
-          </p>
-        </div>
-      </section>
-
-      <section id="timeline">
-        <div class="title">
-          <h2 class="text-4xl">LA NOSTRA STORIA</h2>
-        </div>
-        <div
-          class="container relative mx-auto bg-rosa-400 shadow-md shadow-grey-400"
-        >
-          <!-- <div
-            class="border border-solid absolute left-1/2 border-opacity-20 border-gray-700 h-full"
-          ></div> -->
-          <div
-            class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-4 gap-y-2 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
-            id="events"
-          >
-            <template v-for="(event, i) in events" :key="`event_${i}`">
-              <div
-                :class="[`text-${event.color}-600`, 'pb-5', i % 2 === 0 ? 'text-right' : 'text-left']"
-                :style="{order: 3*i + (i % 2 === 0 ? 1 : 3)}"
+          <div class="md:px-6">
+            <h2 class="leading-1 text-4xl text-center md:text-left">
+              <span class="block font-parisienne text-petrolio"
+                >Il nostro</span
               >
-                <div class="uppercase text-xl">{{ event.month }}</div>
-                <div class="uppercase text-5xl font-bold">{{ event.year }}</div>
-              </div>
-
-              <div
-                class="flex flex-col justify-center items-center"
-                :style="{order: 3*i + 2}"
+              <span class="block font-limelight text-oliva pl-2 -mt-3"
+                >inizio</span
               >
-                <div
-                  class="h-2.5 w-2.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-300`]"
-                ></div>
-                <div
-                  class="h-3 w-3 rounded-full mb-2"
-                  :class="[`bg-${event.color}-400`]"
-                ></div>
-                <div
-                  class="h-3.5 w-3.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-500`]"
-                ></div>
-                <div
-                  class="h-3 w-3 rounded-full mb-2"
-                  :class="[`bg-${event.color}-400`]"
-                ></div>
-                <div
-                  class="h-2.5 w-2.5 rounded-full mb-2"
-                  :class="[`bg-${event.color}-300`]"
-                ></div>
-                <div
-                  class="h-2 w-2 rounded-full"
-                  :class="[`bg-${event.color}-200`]"
-                ></div>
-              </div>
-
-              <div
-                :class="[`text-${event.color}-900`, 'pb-5', i % 2 === 0 ? 'text-left' : 'text-right']"
-                :style="{order: 3*i + (i % 2 === 0 ? 3 : 1)}"
-              >
-                <div class="text-lg">{{ event.text }}</div>
-              </div>
-            </template>
+            </h2>
+            <article class="text-sm pt-4 md:pt-6">
+              <p>
+                Luca vide Francesca, qualcosa in lei lo colpì, decise quindi di
+                fare il primo passo e scriverle. Il liceo era lo stesso, e
+                l'inverno si avvicinava...piena stagione sciistica pensò. Questo
+                sarà il mio approccio! "Ciao, ho visto che sai sciare, vai a
+                fare la vacanza di sci con Moscatelli?" Francesca non sapeva se
+                ridere o piangere a questo messaggio, in fondo...lui doveva aver
+                guardato un po' di sue foto su facebook per capire che sciava.
+                Ma come aveva fatto a non accorgersi che questo stesso anno si
+                era rotta un ginocchio mentre sciava? Però quel ragazzo le
+                piaceva, sembrava dolce, aveva dei ricci ribelli e due occhi in
+                cui perdersi. Gli avrebbe risposto.
+              </p>
+              <p class="pt-4">
+                Da quel giorno tutto è cambiato nelle loro vite, si sono
+                conosciuti, si sono piaciuti e si sono innamorati, ogni giorno
+                di più. Hanno litigato tante volte e altrettante volte si sono
+                chiesti se stare insieme era la cosa giusta, ma alla fine hanno
+                capito che l'unica cosa che volevano era passare la loro vita
+                insieme.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="checklist">
-        <div class="title">
-          <h2 class="text-4xl">WEDDING WORK IN PROGRESS</h2>
-        </div>
 
-        <div class="p-4 grid grid-cols-2 gap-x-4 md:grid-cols-3">
+      <section
+        id="timeline"
+        class="py-6 bg-cover bg-center"
+        style="
+          background-image: linear-gradient(
+              rgba(18, 50, 67, 0.7),
+              rgba(18, 50, 67, 0.7)
+            ),
+            url(images/our_story.jpg);
+        "
+      >
+        <h2 class="text-center pb-4 text-4xl">
+          <span class="block font-parisienne text-white">La nostra</span>
+          <span class="block font-limelight text-rosa -mt-2">storia</span>
+        </h2>
+        <div
+          class="relative grid grid-cols-[1fr,1rem,1fr] gap-x-6 justify-items-stretch items-center overflow-hidden p-4 :md:p-10"
+          id="events"
+        >
+          <template v-for="(event, i) in events" :key="`event_${i}`">
+            <div
+              :class="[`text-${event.color}-600`, 'pb-5', i % 2 === 0 ? 'text-right' : 'text-left']"
+              :style="{order: 3*i + (i % 2 === 0 ? 1 : 3)}"
+            >
+              <div class="font-parisienne lowercase text-3xl text-white">{{ event.month }}</div>
+              <div class="font-limelight text-3xl font-bold text-rosa">{{ event.year }}</div>
+            </div>
+
+            <div
+              class="flex flex-col justify-center items-center h-full"
+              :style="{order: 3*i + 2}"
+            >
+              <div class="relative border border-l-2 border-white border-solid h-full">
+                <div class="w-4 h-4 rounded-full bg-rosa absolute top-1/3 -ml-2"></div>
+              </div>
+            </div>
+
+            <div
+            class="text-white pb-5"
+              :class="[i % 2 === 0 ? 'text-left' : 'text-right']"
+              :style="{order: 3*i + (i % 2 === 0 ? 3 : 1)}"
+            >
+              <div class="text">{{ event.text }}</div>
+            </div>
+          </template>
+        </div>
+        <div
+          class="h-16 flex flex-col justify-center items-center h-full"
+        >
+          <div class="text-rosa font-limelight text-2xl">To be continued...</div>
+        </div>
+      </section>
+
+      <section id="checklist" class="py-10 max-w-screen-lg mx-auto">
+
+        <h2 class="text-center pb-4 text-4xl">
+          <span class="block font-parisienne text-petrolio">Wedding</span>
+          <span class="block font-limelight text-oliva -mt-2">work in progress</span>
+        </h2>
+
+        <div class="py-4 px-7 lg:px-4 grid grid-cols-2-auto gap-x-4 gap-y-2 md:grid-cols-3-auto lg:grid-cols-4">
           <div
             v-for="(e, i) in todos"
             :key="i"
             class="flex items-center space-x-2"
           >
             <div>
-              <!-- <svg
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 52 52"
-                class="w-7 fill-petrolio"
-              >
-              <path d="M 22.669922 0.056640625 A 22.612173 22.612173 0 0 0 0.056640625 22.669922 A 22.612173 22.612173 0 0 0 22.669922 45.28125 A 22.612173 22.612173 0 0 0 45.28125 22.669922 A 22.612173 22.612173 0 0 0 22.669922 0.056640625 z M 22.669922 5.9941406 A 16.674656 16.674656 0 0 1 39.34375 22.669922 A 16.674656 16.674656 0 0 1 22.669922 39.34375 A 16.674656 16.674656 0 0 1 5.9941406 22.669922 A 16.674656 16.674656 0 0 1 22.669922 5.9941406 z " style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#91c2e1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.30000001;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
-
-                <svg v-if="e.checked"  class="fill-rosa-700">
-                  <path id="path4549" d="m 43.296369,3.0730864 c -0.828399,0 -1.625522,0.1867697 -2.369026,0.555841 C 31.884649,8.094422 25.738227,16.613445 22.531864,22.059257 l -5.921226,-4.194723 c -0.910614,-0.646098 -1.982083,-0.987467 -3.096445,-0.987467 -1.737227,0 -3.374367,0.846273 -4.3779185,2.262684 -1.7095239,2.411921 -1.1375974,5.765734 1.2752165,7.474364 l 7.304574,5.175041 c 1.605862,1.137598 3.449431,1.739014 5.33232,1.739014 0.66129,0 1.326155,-0.07507 1.978508,-0.223409 2.549541,-0.579969 4.779161,-2.293961 6.116933,-4.702308 C 33.479788,24.393432 38.475208,16.800215 45.67612,13.243547 46.961167,12.60996 47.920931,11.51347 48.380259,10.156932 48.840481,8.8003937 48.743969,7.3455558 48.109488,6.0614022 47.198874,4.2178329 45.355305,3.0730864 43.296369,3.0730864 Z"/>
-                </svg>
-              </svg> -->
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                class="w-8 fill-petrolio"
+                class="w-6"
+                :class="[e.checked ? 'fill-oliva' : 'fill-petrolio']"
               >
-                <g v-if="e.checked">
+                <g>
                   <path
-                    d="m 20,12 a 8,8 0 0 1 -8,8 8,8 0 0 1 -8,-8 8,8 0 0 1 8,-8 c 0.76,0 1.5,0.11 2.2,0.31 L 15.77,2.74 C 14.61,2.26 13.34,2 12,2 A 10,10 0 0 0 2,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12"
-                  />
-
-                  <svg class="fill-rosa-700">
-                    <path
-                      d="M 7.91,10.08 6.5,11.5 11,16 21,6 19.59,4.58 11,13.17 Z"
-                    />
-                  </svg>
-                </g>
-                <path
-                  v-else
                   d="M 12,20 A 8,8 0 0 1 4.0000001,12 8,8 0 0 1 12,4 a 8,8 0 0 1 8,8 8,8 0 0 1 -8,8 M 12,2 A 10,10 0 0 0 2.0000001,12 10,10 0 0 0 12,22 10,10 0 0 0 22,12 10,10 0 0 0 12,2 Z"
                   id="path823"
                 />
+                  <svg v-if="e.checked" viewBox="0 0 37 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35.7891 0.222656C36.5898 0.222656 36.9902 0.642578 36.9902 1.48242C36.9902 1.91211 36.8535 2.41016 36.5801 2.97656C36.3262 3.52344 36.1211 3.97266 35.9648 4.32422L20.0566 43.6113L0.779297 0.544922H16.7754L26.0918 22.459L32.625 6.11133C33.3281 4.35352 33.7871 3.08398 34.002 2.30273C34.2168 1.52148 34.4512 0.984375 34.7051 0.691406C34.959 0.378906 35.3203 0.222656 35.7891 0.222656Z" fill="#668172"/>
+                  </svg>
+                </g>
               </svg>
             </div>
-            <p class="text-petrolio">{{ e.text }}</p>
+            <p class="pl-2" :class="[e.checked ? 'text-oliva' : 'text-petrolio']">{{ e.text }}</p>
           </div>
         </div>
       </section>
 
-      <section id="partecipations" class="my-6">
-        <div class="title">
-          <h2 class="text-4xl">PARTECIPAZIONI</h2>
-        </div>
+      <section id="partecipations" class="py-10 bg-cover bg-center">
+        <h2 class="relative text-center pb-4 text-4xl">
+          <span class="block font-parisienne text-white ">Il grande</span>
+          <span class="block font-limelight text-rosa -mt-2">giorno</span>
+        </h2>
 
-        <div class="flex flex-col items-center">
+        <div class="relative flex flex-col items-center">
           <div class="my-4 flex flex flex-col items-center">
-            <figure class="">
-              <img src="images/partecipations/chiesa_green.png" />
+            <figure class="w-16">
+              <img src="images/partecipations/chiesa.png" />
             </figure>
 
-            <div class="text-2xl text-center my-2">
-              <p class="text-3xl">ore 11</p>
-              <p>Chiesa Ss Nazaro e Celso</p>
+            <div class="text-center">
+              <p class="font-limelight text-petrolio text-2xl">ore 11</p>
+              <p class="font-parisienne text-white text-3xl">Chiesa parrocchiale <br> Santi Nazaro e Celso</p>
+              <p class="font-limelight text-petrolio text-xl">Marcallo con Casone</p>
             </div>
 
-            <div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.198608014073!2d8.868912740622266!3d45.48488359857862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786f22a4fb859bb%3A0x7dae5ea872cd3ccb!2sChiesa%20Parrocchiale%20dei%20Santi%20Nazaro%20e%20Celso!5e0!3m2!1sit!2sit!4v1644952223608!5m2!1sit!2sit"
-                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
+            <div class="pt-8">
+              <a href="https://goo.gl/maps/hcmTSHeaqVu3qmGs9" class="border border-solid border-rosa px-2 py-1 rounded-md text-rosa hover:bg-rosa hover:text-petrolio">Come raggiungerci</a>
             </div>
+
           </div>
 
-          <div class="mt-6 flex flex flex-col items-center">
+          <div class="mt-10 flex flex flex-col items-center">
             <div>
-              <figure class="inline-block">
+              <figure class="inline-block w-14">
                 <img src="images/partecipations/ristorante.png" />
               </figure>
-              <figure class="inline-block">
+              <figure class="inline-block w-14">
                 <img src="images/partecipations/torta.png" />
               </figure>
             </div>
 
-            <div class="text-2xl text-center my-2">
-              <p>La Barcella</p>
+            <div class="text-center mt-2">
+              <p class="font-parisienne text-white text-3xl">La Barcella</p>
+              <p class="font-limelight text-petrolio text-xl">Robecco sul Naviglio</p>
             </div>
 
-            <div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11201.600014391748!2d8.851232!3d45.4214374!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8c43808c6f4457fb!2sLa%20Barcella!5e0!3m2!1sit!2sit!4v1644963587791!5m2!1sit!2sit"
-                class="w-[90vw] h-64 md:w-[85vw] md:h-80"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
+            <div class="pt-8 flex flex-col items-center">
+              <a href="https://goo.gl/maps/xon2af8emactoSEP6" class="border border-solid border-rosa px-2 py-1 rounded-md text-rosa hover:bg-rosa hover:text-petrolio">Come raggiungerci</a>
+              <a href="mailto:invitati@lucaefrancescasposi.it" class="mt-6 border border-solid border-rosa px-2 py-1 rounded-md text-rosa hover:bg-rosa hover:text-petrolio">Confermaci la tua presenza*<span class="block font-limelight text-sm w-full text-center">entro il 30 aprile 2022</span></a>
+              <span class="text-petrolio text-sm">*se hai esigenze alimentari ricordati di dircelo</span>
             </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <section id="primi-passi" class="py-10 px-6 lg:w-4/5 xl:w-3/4 mx-auto">
+        <div class="flex flex-col md:flex-row md:space-x-6 items-center">
+          <div class="flex-1 mb-6 md:mb-0">
+            <h2 class="relative text-center pb-4 text-4xl">
+              <span class="block font-parisienne text-petrolio ">I nostri primi</span>
+              <span class="block font-limelight text-oliva -mt-2">passi</span>
+            </h2>
+
+            <p class="text-center">
+              <span class="relative">
+                La nostra casa  ancora non esiste, <br>
+                sicuramente sarà piena di <span class="text-oliva font-bold">amore</span>  e <span class="font-bold text-oliva">risate</span> <br>
+                ma non si sa di quali altre cose... <br>
+                Se volete darci una mano <br>
+              </span>
+              <span class="font-bold slashed-zero text-petrolio">IT85G0306932570100000002821</span><br>
+              <span>intestato a Luca Colombo</span>
+
+            </p>
+          </div>
+
+          <div id="home-slideshow" class="flex flex-1 relative">
+            <!-- <transition-group name="carousel" tag="figure" class=" w-full">
+              <img v-for="(img,i) in images" :key="i" v-show="i===visibleIndex" :src="img.src" class="">
+            </transition-group> -->
+            <figure>
+              <img src="images/house/salotto.jpg"/>
+            </figure>
           </div>
         </div>
       </section>
@@ -478,26 +519,26 @@
     <script>
       const { ref, reactive } = Vue;
 
-      const future = Date.parse("jun 04, 2022 10:30:00");
+      const future = Date.parse("jun 04, 2022 11:00:00");
 
       Vue.createApp({
         setup() {
           const timer = reactive({
             d: {
               val: undefined,
-              label: "Giorni",
+              label: "giorni",
             },
             h: {
               val: undefined,
-              label: "Ore",
+              label: "ore",
             },
             m: {
               val: undefined,
-              label: "Minuti",
+              label: "minuti",
             },
             s: {
               val: undefined,
-              label: "Secondi",
+              label: "secondi",
             },
           });
 
@@ -515,6 +556,8 @@
             timer.s.val = secs - mins * 60;
           };
 
+
+
           return {
             timer,
             updateTimer,
@@ -530,13 +573,6 @@
           setInterval(this.updateTimer, 1000);
         },
       }).mount("#countdown");
-
-      Vue.createApp({
-        setup() {
-          const days = reactive(["L", "M", "M", "G", "V", "S", "D"]);
-          return { days };
-        },
-      }).mount("#calendar");
 
       Vue.createApp({
         setup() {
@@ -572,8 +608,8 @@
               color: "sky",
             },
             {
-              month: "2014",
-              year: "2015",
+              month: "",
+              year: "2014 - 2015",
               text: "Anni di risate e tanto amore",
               color: "blue",
             },
@@ -584,8 +620,8 @@
               color: "indigo",
             },
             {
-              month: "2017",
-              year: "2019",
+              month: "",
+              year: "2017 - 2019",
               text: "Altri anni di risate e tanto amore",
               color: "violet",
             },
@@ -601,16 +637,28 @@
               text: "Abbiamo superato anche il lockdown",
               color: "fuchsia",
             },
+            // {
+            //   month: "AGOSTO",
+            //   year: "2020",
+            //   text: "COVID",
+            //   color: "pink",
+            // },
             {
-              month: "AGOSTO",
+              month: "DICEMBRE",
               year: "2020",
-              text: "COVID",
-              color: "pink",
+              text: 'Entrambi abbiamo un lavoro',
+              color: "rose",
             },
             {
               month: "SETTEMBRE",
               year: "2021",
               text: '"Mi vuoi sposare?"',
+              color: "rose",
+            },
+            {
+              month: "GIUGNO",
+              year: "2022",
+              text: 'Matrimonio!',
               color: "rose",
             },
           ]);
@@ -647,12 +695,16 @@
               checked: true,
             },
             {
+              text: "Tableau",
+              checked: false,
+            },
+            {
               text: "Location",
               checked: true,
             },
             {
               text: "Fiori",
-              checked: true,
+              checked: false,
             },
             {
               text: "Invitati",
@@ -660,7 +712,7 @@
             },
             {
               text: "Partecipazioni",
-              checked: false,
+              checked: true,
             },
             {
               text: "Bomboniere",
@@ -699,6 +751,57 @@
           return { todos };
         },
       }).mount("#checklist");
+    </script>
+    <script>
+      const menu = document.getElementById("mobile-menu");
+      const hamburger = document.getElementById("hamburger");
+      const menuItems = document.querySelectorAll(".menuItem");
+
+      function toggleMenu() {
+        if (menu.classList.contains("hidden")) {
+          menu.classList.remove("hidden");
+          hamburger.classList.replace("text-white", "text-rosa");
+        } else {
+          menu.classList.add("hidden");
+          hamburger.classList.replace("text-rosa", "text-white");
+        }
+      }
+
+      hamburger.addEventListener("click", toggleMenu);
+      menuItems.forEach( 
+        function(menuItem) { 
+          menuItem.addEventListener("click", toggleMenu);
+        }
+      )
+
+
+      // Vue.createApp({
+      //   setup() {
+      //     const images = reactive([
+      //       {
+      //         src: "images/house/salotto.jpg"
+      //       },
+      //       {
+      //         src: "images/house/camera.jpg"
+      //       },
+      //     ]);
+
+      //     const visibleIndex = ref(0);
+
+      //     const slide = () => {
+      //       if(visibleIndex.value < images.length - 1)
+      //         visibleIndex.value++;
+      //       else
+      //         visibleIndex.value = 0;
+      //     }
+
+      //     return { images, visibleIndex, slide };
+      //   },
+
+      //   created() {
+      //     setInterval(this.slide, 6000);
+      //   }
+      // }).mount("#primi-passi");
     </script>
   </body>
 </html>
