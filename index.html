@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Luca & Francesca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -150,7 +154,7 @@
   </head>
   <body>
     <nav
-      class="absolute top-0 w-full z-50 bg-oliva text-white px-2 sm:px-4 md:py-2.5 md:h-[60px]"
+      class="absolute top-0 w-full z-50 bg-oliva text-white px-2 sm:px-4 md:py-2.5"
     >
       <div
         class="flex flex-wrap justify-between mx-auto"
@@ -193,7 +197,7 @@
         </button>
         <div class="hidden w-full md:block md:w-auto md:flex-auto" id="mobile-menu">
           <ul
-            class="flex flex-col md:h-full md:items-center md:flex-row md:space-x-6 md:text-sm md:font-medium"
+            class="flex flex-col md:h-full md:items-center md:flex-row md:space-x-4 md:text-sm md:font-medium"
           >
             <li class="menuItem relative group w-full text-center">
               <a
@@ -208,7 +212,7 @@
               <a
                 href="#our_story"
                 class="block py-2 text-white md:hover:text-rosa md:p-0"
-                >La nostra storia</a
+                >Il nostro inizio</a
               >
               <hr class="w-1/2 mx-auto md:hidden">
             </li>
@@ -216,7 +220,7 @@
               <a
                 href="#timeline"
                 class="block py-2 text-white md:hover:text-rosa md:p-0"
-                >Il nostro inizio</a
+                >La nostra storia</a
               >
               <hr class="w-1/2 mx-auto md:hidden">
             </li>
@@ -233,6 +237,14 @@
                 href="#partecipations"
                 class="block py-2 text-white md:hover:text-rosa md:p-0"
                 >Il grande giorno</a
+              >
+              <hr class="w-1/2 mx-auto md:hidden">
+            </li>
+            <li class="menuItem relative group w-full text-center">
+              <a
+                href="#primi-passi"
+                class="block py-2 text-white md:hover:text-rosa md:p-0"
+                >I nostri primi passi</a
               >
             </li>
           </ul>
@@ -480,12 +492,14 @@
             </h2>
 
             <p class="text-center">
-              La nostra casa  ancora non esiste, <br>
-              sicuramente sarà piena di amore  e risate <br>
-              ma non si sa di quali altre cose... <br>
-              Se volete darci una mano <br>
-              <span class="font-bold slashed-zero my-8">IT85G0306932570100000002821</span><br>
-              intestato a Luca Colombo
+              <span class="relative">
+                La nostra casa  ancora non esiste, <br>
+                sicuramente sarà piena di <span class="text-oliva font-bold">amore</span>  e <span class="font-bold text-oliva">risate</span> <br>
+                ma non si sa di quali altre cose... <br>
+                Se volete darci una mano <br>
+              </span>
+              <span class="font-bold slashed-zero text-petrolio">IT85G0306932570100000002821</span><br>
+              <span>intestato a Luca Colombo</span>
 
             </p>
           </div>
@@ -541,6 +555,8 @@
             timer.m.val = mins - hours * 60;
             timer.s.val = secs - mins * 60;
           };
+
+
 
           return {
             timer,
@@ -677,6 +693,10 @@
             {
               text: "Testimoni",
               checked: true,
+            },
+            {
+              text: "Tableau",
+              checked: false,
             },
             {
               text: "Location",
